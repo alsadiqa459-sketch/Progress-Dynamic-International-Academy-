@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progress Dynamic International Academy | Abuja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --navy: #0A1628;
+      --blue: #1A3A6B;
+      --mid-blue: #2563EB;
+      --sky: #3B82F6;
+      --light-blue: #DBEAFE;
+      --ice: #EFF6FF;
+      --white: #FFFFFF;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-400: #94A3B8;
+      --gray-600: #475569;
+      --gray-800: #1E293B;
+      --gold: #F59E0B;
+      --radius: 16px;
+      --shadow: 0 8px 32px rgba(10,22,40,0.12);
+      --shadow-lg: 0 20px 60px rgba(10,22,40,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--gray-800);
+      overflow-x: hidden;
+    }
+
+    /* ===================== NAVBAR ===================== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 40px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s ease;
+      background: transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(10,22,40,0.97);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo-crest {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--mid-blue), var(--navy));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--gold);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 20px;
+      color: var(--white);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-crest::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent);
+    }
+
+    .logo-text { line-height: 1.1; }
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--white);
+      display: block;
+      letter-spacing: 0.5px;
+    }
+    .logo-tag {
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    nav { display: flex; align-items: center; gap: 8px; }
+
+    nav a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      letter-spacing: 0.3px;
+    }
+    nav a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+
+    .nav-cta {
+      background: var(--mid-blue) !important;
+      color: var(--white) !important;
+      padding: 10px 22px !important;
+      border-radius: 10px !important;
+      font-weight: 600 !important;
+      margin-left: 8px;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.4) !important; background: var(--sky) !important; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px; left: 0; right: 0;
+      background: rgba(10,22,40,0.98);
+      padding: 20px 40px 30px;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 999;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 16px;
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .mobile-menu a:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(10,22,40,0.92) 0%, rgba(26,58,107,0.85) 50%, rgba(37,99,235,0.75) 100%),
+        url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37,99,235,0.25);
+      border: 1px solid rgba(59,130,246,0.4);
+      color: var(--light-blue);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      backdrop-filter: blur(8px);
+      animation: fadeInDown 0.8s ease both;
+    }
+
+    .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.9s 0.2s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero p {
+      max-width: 580px;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      margin-bottom: 44px;
+      animation: fadeInUp 0.9s 0.4s ease both;
+      font-weight: 300;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.9s 0.6s ease both;
+    }
+
+    .btn-primary {
+      background: var(--mid-blue);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(37,99,235,0.5); background: var(--sky); }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.2); transform: translateY(-3px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 64px;
+      animation: fadeIn 1s 0.8s ease both;
+    }
+
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.4rem;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+    .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+
+    /* ===================== SECTION UTILS ===================== */
+    section { padding: 100px 60px; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--mid-blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-tag::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--mid-blue);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    /* ===================== ABOUT ===================== */
+    .about {
+      background: var(--gray-100);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-main {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+      background: linear-gradient(135deg, var(--mid-blue), var(--navy));
+    }
+
+    .about-img-main-inner {
+      width: 100%;
+      height: 500px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-img-main-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-badge-float {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 220px;
+    }
+
+    .about-badge-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--mid-blue), var(--navy));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .about-badge-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .about-badge-txt {
+      font-size: 12px;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s;
+    }
+    .about-feature:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--light-blue); }
+
+    .about-feature-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--ice);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mid-blue);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .about-feature-title { font-weight: 600; font-size: 13px; color: var(--navy); margin-bottom: 2px; }
+    .about-feature-sub { font-size: 12px; color: var(--gray-600); }
+
+    /* ===================== CAROUSEL ===================== */
+    .carousel-section {
+      background: var(--navy);
+      padding: 100px 0;
+      overflow: hidden;
+    }
+
+    .carousel-section .inner-header {
+      padding: 0 60px;
+      margin-bottom: 60px;
+    }
+
+    .carousel-section .section-tag { color: var(--sky); }
+    .carousel-section .section-tag::before { background: var(--sky); }
+    .carousel-section .section-title { color: var(--white); }
+    .carousel-section .section-subtitle { color: rgba(255,255,255,0.6); }
+
+    .carousel-track-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 28px;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 0 60px;
+    }
+
+    .carousel-card {
+      flex: 0 0 300px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: all 0.4s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .carousel-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(59,130,246,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .carousel-card-img {
+      height: 190px;
+      background: linear-gradient(135deg, var(--blue), var(--mid-blue));
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .carousel-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.7), transparent 60%);
+    }
+
+    .carousel-card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--mid-blue);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    .carousel-card-body { padding: 24px; }
+    .carousel-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .carousel-card-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .carousel-card-link {
+      color: var(--sky);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .carousel-card:hover .carousel-card-link { gap: 10px; }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 60px 0;
+    }
+
+    .carousel-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+    .carousel-btn:hover { background: var(--mid-blue); border-color: var(--mid-blue); transform: scale(1.05); }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dot.active { width: 28px; border-radius: 4px; background: var(--sky); }
+
+    /* ===================== FACILITIES ===================== */
+    .facilities { background: var(--white); }
+
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .facility-card {
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      height: 280px;
+      cursor: pointer;
+      group: true;
+    }
+
+    .facility-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .facility-card:hover img { transform: scale(1.08); }
+
+    .facility-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.2) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      transition: all 0.3s;
+    }
+
+    .facility-card:hover .facility-card-overlay { background: linear-gradient(to top, rgba(37,99,235,0.85) 0%, rgba(10,22,40,0.3) 60%, transparent 100%); }
+
+    .facility-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 20px;
+      margin-bottom: 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    .facility-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .facility-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .facility-card:hover .facility-desc { max-height: 80px; }
+
+    .facility-card.large { grid-row: span 2; height: 100%; min-height: 584px; }
+
+    /* ===================== GALLERY ===================== */
+    .gallery-section {
+      background: var(--gray-100);
+      padding: 100px 60px;
+    }
+
+    .gallery-filter {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 40px 0 36px;
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      border-radius: 100px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--mid-blue);
+      color: var(--white);
+      border-color: var(--mid-blue);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 1;
+    }
+
+    .gallery-item.tall { aspect-ratio: auto; grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,22,40,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+    .gallery-item-overlay i { font-size: 28px; color: var(--white); }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 16px; object-fit: contain; }
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--white);
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+    /* ===================== FEE PAYMENT ===================== */
+    .fees-section {
+      background: var(--navy);
+      padding: 100px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fees-section::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.15), transparent 70%);
+    }
+
+    .fees-section .section-tag { color: var(--sky); }
+    .fees-section .section-tag::before { background: var(--sky); }
+    .fees-section .section-title { color: var(--white); }
+    .fees-section .section-subtitle { color: rgba(255,255,255,0.6); }
+
+    .fees-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 60px;
+      align-items: start;
+    }
+
+    .fees-plans {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .fee-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fee-card.featured {
+      background: var(--mid-blue);
+      border-color: var(--mid-blue);
+    }
+
+    .fee-card.featured::before {
+      content: 'POPULAR';
+      position: absolute;
+      top: 16px; right: 20px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .fee-card:hover:not(.featured) { background: rgba(255,255,255,0.1); border-color: rgba(59,130,246,0.4); transform: translateX(4px); }
+
+    .fee-level { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .fee-sublabel { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .fee-amount { font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--white); letter-spacing: 1px; }
+    .fee-period { font-size: 12px; color: rgba(255,255,255,0.5); text-align: right; margin-top: 2px; }
+
+    .fee-form-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 44px;
+      position: relative;
+    }
+
+    .fee-form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .fee-form-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 32px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-label { font-size: 13px; font-weight: 600; color: var(--gray-800); margin-bottom: 8px; display: block; }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--gray-200);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--gray-800);
+      background: var(--gray-100);
+      transition: all 0.3s;
+      outline: none;
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: var(--mid-blue);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.1);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .pay-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--mid-blue), var(--sky));
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s;
+      box-shadow: 0 8px 28px rgba(37,99,235,0.35);
+      margin-top: 8px;
+    }
+    .pay-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(37,99,235,0.5); }
+
+    .secure-badge { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; font-size: 12px; color: var(--gray-400); }
+
+    /* ===================== TESTIMONIALS ===================== */
+    .testimonials { background: var(--ice); padding: 100px 60px; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .testi-card {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 36px;
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--light-blue); }
+
+    .testi-quote {
+      font-size: 52px;
+      font-family: 'Playfair Display', serif;
+      color: var(--light-blue);
+      line-height: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .testi-text {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--gray-600);
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .testi-avatar-row { display: flex; align-items: center; gap: 14px; }
+
+    .testi-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--light-blue);
+    }
+
+    .testi-name { font-weight: 700; font-size: 14px; color: var(--navy); }
+    .testi-role { font-size: 12px; color: var(--gray-400); }
+
+    .testi-stars { color: var(--gold); font-size: 13px; margin-bottom: 16px; letter-spacing: 2px; }
+
+    /* ===================== CTA BANNER ===================== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--mid-blue) 0%, var(--navy) 100%);
+      padding: 90px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white);
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      margin-bottom: 40px;
+      position: relative;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 80px 60px 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand .logo-name { font-size: 18px; }
+    .footer-brand p { color: rgba(255,255,255,0.5); font-size: 13.5px; line-height: 1.7; margin: 20px 0 28px; }
+
+    .footer-social { display: flex; gap: 12px; }
+
+    .social-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .social-btn:hover { background: var(--mid-blue); border-color: var(--mid-blue); color: var(--white); transform: translateY(-2px); }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-col ul li a:hover { color: var(--sky); }
+    .footer-col ul li a i { font-size: 12px; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p { color: rgba(255,255,255,0.35); font-size: 13px; }
+    .footer-bottom .webclub { color: var(--sky); font-weight: 600; }
+
+    /* ===================== SCROLL ANIMATION ===================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===================== ANNOUNCEMENT TICKER ===================== */
+    .ticker-wrap {
+      background: var(--mid-blue);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .ticker-inner span { margin: 0 48px; }
+    .ticker-inner span::before { content: '•'; color: var(--gold); margin-right: 16px; }
+
+    /* ===================== WELCOME BANNER ===================== */
+    .web-club-banner {
+      background: linear-gradient(90deg, var(--ice) 0%, var(--white) 100%);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 10px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--gray-600);
+    }
+    .web-club-banner strong { color: var(--mid-blue); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 1024px) {
+      section { padding: 80px 40px; }
+      .about { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual { max-width: 600px; margin: 0 auto; }
+      .facilities-grid { grid-template-columns: repeat(2, 1fr); }
+      .facility-card.large { grid-row: auto; min-height: 280px; height: 280px; }
+      .fees-layout { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      #navbar { padding: 0 20px; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 70px 24px; }
+      .carousel-section .inner-header { padding: 0 24px; }
+      .carousel-track { padding: 0 24px; }
+      .carousel-controls { padding: 32px 24px 0; }
+      .gallery-section { padding: 70px 24px; }
+      .fees-section { padding: 70px 24px; }
+      .testimonials { padding: 70px 24px; }
+      .cta-banner { padding: 70px 24px; }
+      footer { padding: 60px 24px 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .facilities-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.wide { grid-column: span 1; aspect-ratio: 1; }
+      .gallery-item.tall { grid-row: auto; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .about-badge-float { right: 10px; bottom: -16px; }
+      .web-club-banner { padding: 10px 24px; }
+      .hero-stats { gap: 28px; flex-wrap: wrap; justify-content: center; }
+      .about-features { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* Payment success modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 56px 48px;
+      text-align: center;
+      max-width: 440px;
+      width: 90%;
+      transform: scale(0.9);
+      transition: transform 0.3s;
+    }
+    .modal-overlay.open .modal { transform: scale(1); }
+
+    .modal-icon {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: var(--white);
+      margin: 0 auto 24px;
+    }
+
+    .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 10px; }
+    .modal p { color: var(--gray-600); font-size: 14.5px; line-height: 1.6; margin-bottom: 32px; }
+
+    .modal-close-btn {
+      padding: 14px 40px;
+      background: var(--mid-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .modal-close-btn:hover { background: var(--sky); }
+
+    /* Smooth counter */
+    .counter { display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      <span>New Academic Session 2025/2026 Enrollment Now Open</span>
+      <span>Outstanding WASSCE Results — 100% Distinction Rate</span>
+      <span>Inter-Schools Science Competition: PDIA Takes Gold Again</span>
+      <span>Scholarship Applications Now Available for Outstanding Students</span>
+      <span>Web Dev Club Building Africa's Best School Website — Watch This Space!</span>
+      <span>Parents-Teachers Meeting: May 15, 2025 — 9AM School Hall</span>
+    </div>
+  </div>
+
+  <!-- Web Club Credit Bar -->
+  <div class="web-club-banner">
+    <i class="fa-solid fa-code" style="color:var(--mid-blue)"></i>
+    Website crafted by the <strong>&nbsp;PDIA Web Development Club</strong>&nbsp;· Abuja, Nigeria
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar">
+    <a href="#" class="logo">
+      <div class="logo-crest">PDIA</div>
+      <div class="logo-text">
+        <span class="logo-name">Progress Dynamic<br>International Academy</span>
+        <span class="logo-tag">Abuja, Nigeria</span>
+      </div>
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#fees">Pay Fees</a>
+      <a href="#contact">Contact</a>
+      <a href="#fees" class="nav-cta">Enroll Now</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#programs" onclick="toggleMenu()">Programs</a>
+    <a href="#facilities" onclick="toggleMenu()">Facilities</a>
+    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+    <a href="#fees" onclick="toggleMenu()">Pay Fees</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="#fees" onclick="toggleMenu()" style="color:var(--sky);font-weight:700;">→ Enroll Now</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-badge"><span></span>Excellence · Innovation · Character</div>
+    <h1>
+      Shaping Tomorrow's<br>
+      <em>Leaders, Today.</em>
+    </h1>
+    <p>Progress Dynamic International Academy is Abuja's premier institution for holistic education — where academic brilliance meets character development and global citizenship.</p>
+    <div class="hero-btns">
+      <a href="#fees" class="btn-primary"><i class="fa-solid fa-graduation-cap"></i> Begin Enrollment</a>
+      <a href="#about" class="btn-outline"><i class="fa-solid fa-play-circle"></i> Discover PDIA</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="counter" data-target="2500">0</span>+</div>
+        <div class="hero-stat-label">Students Enrolled</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="counter" data-target="98">0</span>%</div>
+        <div class="hero-stat-label">WASSCE Pass Rate</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="counter" data-target="25">0</span>+</div>
+        <div class="hero-stat-label">Years of Excellence</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="counter" data-target="120">0</span>+</div>
+        <div class="hero-stat-label">Qualified Staff</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about reveal" id="about">
+    <div class="about-visual">
+      <div class="about-img-main-inner">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Students at PDIA" />
+      </div>
+      <div class="about-badge-float">
+        <div class="about-badge-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div>
+          <div class="about-badge-num">1st</div>
+          <div class="about-badge-txt">Best School in Abuja<br>2023 & 2024</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">Our Story</div>
+      <h2 class="section-title">A Legacy of Academic <em style="font-style:italic;color:var(--mid-blue)">Distinction</em></h2>
+      <p class="section-subtitle">Founded over two decades ago, Progress Dynamic International Academy has grown into Abuja's most celebrated centre of learning — nurturing minds from Nursery through Senior Secondary with world-class faculty and purpose-built facilities.</p>
+      <div class="about-features" style="margin-top:32px;">
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-book-open"></i></div>
+          <div>
+            <div class="about-feature-title">Holistic Curriculum</div>
+            <div class="about-feature-sub">NERDC-aligned with British enrichment modules</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-users"></i></div>
+          <div>
+            <div class="about-feature-title">Small Class Sizes</div>
+            <div class="about-feature-sub">1:20 teacher-student ratio for personal attention</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-laptop"></i></div>
+          <div>
+            <div class="about-feature-title">Smart Classrooms</div>
+            <div class="about-feature-sub">Interactive boards and e-learning platforms</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <div class="about-feature-title">Safe Environment</div>
+            <div class="about-feature-sub">24/7 security & child safeguarding policy</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-globe"></i></div>
+          <div>
+            <div class="about-feature-title">Global Exposure</div>
+            <div class="about-feature-sub">Exchange programs & international competitions</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="about-feature-title">Award-Winning</div>
+            <div class="about-feature-sub">National & FCT academic excellence awards</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:36px;">
+        <a href="#fees" class="btn-primary" style="display:inline-flex;width:auto;">
+          <i class="fa-solid fa-arrow-right"></i> Enroll Your Child
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Carousel -->
+  <section class="carousel-section" id="programs">
+    <div class="inner-header reveal">
+      <div class="section-tag">Academic Programs</div>
+      <h2 class="section-title">Explore Our 14 <span style="color:var(--sky)">Departments</span></h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.6)">Every student finds their passion within our rich portfolio of academic programs, clubs, and co-curricular activities.</p>
+    </div>
+
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80" alt="Science" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Sciences</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Natural Sciences</div>
+            <div class="carousel-card-desc">Physics, Chemistry & Biology with fully equipped laboratories and hands-on experiments.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&q=80" alt="Mathematics" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">STEM</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Mathematics & Further Maths</div>
+            <div class="carousel-card-desc">From foundational numeracy to advanced calculus and statistics.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="Technology" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Technology</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Computer Science & ICT</div>
+            <div class="carousel-card-desc">Coding, robotics, web development and digital literacy for the modern world.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80" alt="Literature" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Arts</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">English Language & Literature</div>
+            <div class="carousel-card-desc">Building eloquent communicators through language mastery and critical thinking.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1554177255-61502b352de3?w=600&q=80" alt="Commerce" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Commerce</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Commerce & Economics</div>
+            <div class="carousel-card-desc">Entrepreneurship, accounting, and economics preparing future business leaders.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=600&q=80" alt="Fine Art" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Creative Arts</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Visual Arts & Crafts</div>
+            <div class="carousel-card-desc">Painting, sculpture, graphic design and digital art in a creative studio environment.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Sports" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Sports</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Physical Education & Sports</div>
+            <div class="carousel-card-desc">Football, basketball, athletics, swimming and inter-house sports competitions.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80" alt="Music" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Performing Arts</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Music & Performing Arts</div>
+            <div class="carousel-card-desc">Choral groups, drama, keyboard, guitar and orchestral performance training.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Social Studies" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Humanities</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Social Studies & Civics</div>
+            <div class="carousel-card-desc">Understanding society, governance and responsible citizenship in Nigeria and the world.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80" alt="French" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Languages</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">French & Foreign Languages</div>
+            <div class="carousel-card-desc">DELF-certified French program plus Hausa and Arabic language electives.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=600&q=80" alt="Engineering" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Engineering</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Technical & Engineering Drawing</div>
+            <div class="carousel-card-desc">AutoCAD, 3D modelling and technical drawing for future engineers and architects.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&q=80" alt="Leadership" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Leadership</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Leadership & Character Dev.</div>
+            <div class="carousel-card-desc">Student council, debate club, MUN and character formation workshops every term.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600&q=80" alt="Agriculture" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Agriculture</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Agricultural Science</div>
+            <div class="carousel-card-desc">Farm practice, crop science, livestock management and agribusiness projects.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-card-img">
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80" alt="Robotics" />
+            <div class="carousel-card-overlay"></div>
+            <span class="carousel-card-tag">Innovation</span>
+          </div>
+          <div class="carousel-card-body">
+            <div class="carousel-card-title">Robotics & AI Club</div>
+            <div class="carousel-card-desc">Arduino, Raspberry Pi, machine learning fundamentals and national robotics competitions.</div>
+            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn" onclick="moveCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="carousel-btn" id="nextBtn" onclick="moveCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section class="facilities reveal" id="facilities">
+    <div class="section-tag">Our Campus</div>
+    <h2 class="section-title">World-Class <span style="color:var(--mid-blue)">Facilities</span></h2>
+    <p class="section-subtitle">Every corner of the PDIA campus is designed to inspire learning, creativity, health, and excellence in our students.</p>
+
+    <div class="facilities-grid" style="margin-top:60px;">
+      <div class="facility-card large">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="Main Campus" />
+        <div class="facility-card-overlay">
+          <div class="facility-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="facility-name">State-of-the-Art Campus</div>
+          <div class="facility-desc">Our purpose-built campus spans 10 acres in the heart of Abuja, designed to provide the ideal environment for every aspect of student development.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80" alt="Science Lab" />
+        <div class="facility-card-overlay">
+          <div class="facility-icon"><i class="fa-solid fa-flask"></i></div>
+          <div class="facility-name">Science Laboratories</div>
+          <div class="facility-desc">Fully equipped Physics, Chemistry and Biology labs with modern instruments.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80" alt="Library" />
+        <div class="facility-card-overlay">
+          <div class="facility-icon"><i class="fa-solid fa-book"></i></div>
+          <div class="facility-name">Digital Library</div>
+          <div class="facility-desc">10,000+ volumes plus digital databases, reading rooms and quiet study zones.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80" alt="ICT Lab" />
+        <div class="facility-card-overlay">
+          <div class="facility-icon"><i class="fa-solid fa-desktop"></i></div>
+          <div class="facility-name">ICT & Computer Labs</div>
+          <div class="facility-desc">150 high-spec computers with fibre broadband and coding software suites.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80" alt="Sports" />
+        <div class="facility-card-overlay">
+          <div class="facility-icon"><i class="fa-solid fa-person-running"></i></div>
+          <div class="facility-name">Sports Complex</div>
+          <div class="facility-desc">Full-size football pitch, basketball courts, indoor gym and 25-metre swimming pool.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Cafeteria" />
+        <div class="facility-card-overlay">
+          <div class="facility-icon"><i class="fa-solid fa-utensils"></i></div>
+          <div class="facility-name">Nutrition Centre</div>
+          <div class="facility-desc">Certified dietitian-supervised meals serving 3,000 students every school day.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80" alt="Hostel" />
+        <div class="facility-card-overlay">
+          <div class="facility-icon"><i class="fa-solid fa-house"></i></div>
+          <div class="facility-name">Modern Hostel</div>
+          <div class="facility-desc">Air-conditioned dormitories with 24/7 security for boarding students.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Auditorium" />
+        <div class="facility-card-overlay">
+          <div class="facility-icon"><i class="fa-solid fa-microphone"></i></div>
+          <div class="facility-name">Grand Auditorium</div>
+          <div class="facility-desc">1,500-seat air-conditioned hall for assemblies, cultural events and graduations.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery-section reveal" id="gallery">
+    <div class="section-tag">Campus Life</div>
+    <h2 class="section-title">Life at <span style="color:var(--mid-blue)">PDIA</span></h2>
+    <p class="section-subtitle">Moments of brilliance, friendship, competition and growth — captured at Progress Dynamic International Academy.</p>
+
+    <div class="gallery-filter">
+      <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+      <button class="filter-btn" onclick="filterGallery('academics', this)">Academics</button>
+      <button class="filter-btn" onclick="filterGallery('sports', this)">Sports</button>
+      <button class="filter-btn" onclick="filterGallery('events', this)">Events</button>
+      <button class="filter-btn" onclick="filterGallery('campus', this)">Campus</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item wide" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900&q=80" alt="Graduation" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-cat="academics">
+        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80" alt="Classroom" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item tall" data-cat="campus">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80" alt="Campus" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-cat="sports">
+        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80" alt="Basketball" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-cat="sports">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Running" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-cat="academics">
+        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80" alt="Science Lab" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&q=80" alt="Awards" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item wide" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80" alt="School Event" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-cat="campus">
+        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80" alt="Library" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-cat="academics">
+        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80" alt="Arts" />
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+    <img id="lightboxImg" src="" alt="Gallery" />
+  </div>
+
+  <!-- Fee Payment -->
+  <section class="fees-section" id="fees">
+    <div class="reveal">
+      <div class="section-tag">School Fees</div>
+      <h2 class="section-title">Invest in <span style="color:var(--sky)">Your Child's Future</span></h2>
+      <p class="section-subtitle">Transparent and competitive fees across all levels. Pay securely online in minutes.</p>
+    </div>
+
+    <div class="fees-layout">
+      <div class="fees-plans reveal">
+        <div class="fee-card" onclick="selectPlan(this, 'Early Years – Crèche/Nursery', '150000')">
+          <div>
+            <div class="fee-level">Early Years (Crèche/Nursery)</div>
+            <div class="fee-sublabel">Ages 0 – 5 · Full Daycare + Preschool</div>
+          </div>
+          <div>
+            <div class="fee-amount">₦150k</div>
+            <div class="fee-period">per term</div>
+          </div>
+        </div>
+        <div class="fee-card" onclick="selectPlan(this, 'Lower Primary – Basic 1–3', '180000')">
+          <div>
+            <div class="fee-level">Lower Primary (Basic 1–3)</div>
+            <div class="fee-sublabel">Ages 6 – 8 · Foundation Learning</div>
+          </div>
+          <div>
+            <div class="fee-amount">₦180k</div>
+            <div class="fee-period">per term</div>
+          </div>
+        </div>
+        <div class="fee-card featured" onclick="selectPlan(this, 'Upper Primary – Basic 4–6', '210000')">
+          <div>
+            <div class="fee-level">Upper Primary (Basic 4–6)</div>
+            <div class="fee-sublabel">Ages 9 – 12 · Accelerated Programme</div>
+          </div>
+          <div>
+            <div class="fee-amount">₦210k</div>
+            <div class="fee-period">per term</div>
+          </div>
+        </div>
+        <div class="fee-card" onclick="selectPlan(this, 'Junior Secondary – JSS 1–3', '260000')">
+          <div>
+            <div class="fee-level">Junior Secondary (JSS 1–3)</div>
+            <div class="fee-sublabel">Ages 12 – 15 · BECE Preparation</div>
+          </div>
+          <div>
+            <div class="fee-amount">₦260k</div>
+            <div class="fee-period">per term</div>
+          </div>
+        </div>
+        <div class="fee-card" onclick="selectPlan(this, 'Senior Secondary – SS 1–3', '310000')">
+          <div>
+            <div class="fee-level">Senior Secondary (SS 1–3)</div>
+            <div class="fee-sublabel">Ages 15 – 18 · WAEC/NECO/JAMB Intensive</div>
+          </div>
+          <div>
+            <div class="fee-amount">₦310k</div>
+            <div class="fee-period">per term</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fee-form-card reveal">
+        <div class="fee-form-title">Make a Payment</div>
+        <div class="fee-form-sub">Fill in the details below to proceed with your fee payment securely.</div>
+
+        <div class="form-group">
+          <label class="form-label">Student's Full Name</label>
+          <input type="text" class="form-input" placeholder="e.g. Amara Okonkwo" id="studentName" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Admission Number</label>
+            <input type="text" class="form-input" placeholder="PDIA/2024/0001" id="admNo" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Class Level</label>
+            <select class="form-select" id="classLevel">
+              <option value="">— Select Level —</option>
+              <option>Crèche / Nursery</option>
+              <option>Primary 1 – 3</option>
+              <option>Primary 4 – 6</option>
+              <option>JSS 1 – 3</option>
+              <option>SS 1 – 3</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Payment Category</label>
+          <select class="form-select" id="payCategory">
+            <option>Tuition Fee</option>
+            <option>Hostel / Boarding</option>
+            <option>Books & Materials</option>
+            <option>Examination Fee</option>
+            <option>Development Levy</option>
+            <option>Extracurricular Activities</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Amount (₦)</label>
+            <input type="text" class="form-input" placeholder="e.g. 210,000" id="payAmount" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Academic Term</label>
+            <select class="form-select" id="term">
+              <option>First Term 2025/2026</option>
+              <option>Second Term 2025/2026</option>
+              <option>Third Term 2025/2026</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Parent / Guardian Email</label>
+          <input type="email" class="form-input" placeholder="parent@email.com" id="email" />
+        </div>
+
+        <button class="pay-btn" onclick="handlePayment()">
+          <i class="fa-solid fa-lock"></i> Proceed to Secure Payment
+        </button>
+
+        <div class="secure-badge">
+          <i class="fa-solid fa-shield-halved" style="color:#10b981"></i>
+          SSL Encrypted · Flutterwave / Paystack Secured
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials reveal" id="testimonials">
+    <div class="section-tag">Parent & Student Voices</div>
+    <h2 class="section-title">What Our <span style="color:var(--mid-blue)">Community</span> Says</h2>
+    <p class="section-subtitle">Thousands of families trust PDIA with their most precious investment — their children's future.</p>
+
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">My daughter joined PDIA in Primary 3 and has blossomed beyond recognition. The teachers are devoted, the environment is safe, and her academic performance has been extraordinary.</p>
+        <div class="testi-avatar-row">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt="Mrs Adaeze Nwosu" />
+          <div>
+            <div class="testi-name">Mrs. Adaeze Nwosu</div>
+            <div class="testi-role">Parent · Asokoro, Abuja</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">I got six distinctions in my WAEC because of the relentless support from PDIA teachers. The extra classes, the labs, the discipline — PDIA made me. I'm now studying Medicine at UniAbuja.</p>
+        <div class="testi-avatar-row">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Emeka Obi" />
+          <div>
+            <div class="testi-name">Emeka Obi</div>
+            <div class="testi-role">Alumni, Class of 2022</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">The management's transparency with fees and school updates via the portal is commendable. I always know what's happening with my son's education. Best school in Abuja, no question.</p>
+        <div class="testi-avatar-row">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Mr. Garba Usman" />
+          <div>
+            <div class="testi-name">Mr. Garba Usman</div>
+            <div class="testi-role">Parent · Wuse II, Abuja</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <h2>Ready to Join the PDIA Family?</h2>
+    <p>Enrollment for the 2025/2026 academic session is open now. Limited seats available. Secure your child's place today.</p>
+    <div class="cta-btns">
+      <a href="#fees" class="btn-primary"><i class="fa-solid fa-graduation-cap"></i> Start Enrollment</a>
+      <a href="#contact" class="btn-outline"><i class="fa-solid fa-phone"></i> Contact Admissions</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:20px;">
+          <div class="logo-crest">PDIA</div>
+          <div class="logo-text">
+            <span class="logo-name">Progress Dynamic<br>International Academy</span>
+            <span class="logo-tag">Abuja, Nigeria</span>
+          </div>
+        </div>
+        <p>Shaping futures and building character since 1999. PDIA is Abuja's foremost institution for holistic, world-class education from nursery through senior secondary.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+       </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> About PDIA</a></li>
+          <li><a href="#programs"><i class="fa-solid fa-chevron-right"></i> Academic Programs</a></li>
+          <li><a href="#facilities"><i class="fa-solid fa-chevron-right"></i> Our Facilities</a></li>
+          <li><a href="#gallery"><i class="fa-solid fa-chevron-right"></i> Gallery</a></li>
+          <li><a href="#fees"><i class="fa-solid fa-chevron-right"></i> Pay School Fees</a></li>
+          <li><a href="#testimonials"><i class="fa-solid fa-chevron-right"></i> Testimonials</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Academics</h4>
+        <ul>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Nursery & Crèche</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Primary School</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Junior Secondary</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Senior Secondary</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Web Dev Club</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Student Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="#"><i class="fa-solid fa-location-dot"></i> Plot 12, Gwarinpa Estate, Abuja, Nigeria</a></li>
+          <li><a href="tel:+2348012345678"><i class="fa-solid fa-phone"></i> +234 801 234 5678</a></li>
+          <li><a href="tel:+2348087654321"><i class="fa-solid fa-phone"></i> +234 808 765 4321</a></li>
+          <li><a href="mailto:info@pdia.edu.ng"><i class="fa-solid fa-envelope"></i> info@pdia.edu.ng</a></li>
+          <li><a href="mailto:admissions@pdia.edu.ng"><i class="fa-solid fa-envelope"></i> admissions@pdia.edu.ng</a></li>
+          <li><a href="#"><i class="fa-solid fa-clock"></i> Mon – Fri: 7:30AM – 4PM</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Progress Dynamic International Academy, Abuja. All rights reserved.</p>
+      <p>Website designed & developed by the <span class="webclub">PDIA Web Development Club</span> 🚀</p>
+    </div>
+  </footer>
+
+  <!-- Payment Success Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
+      <h3>Payment Initiated!</h3>
+      <p>Thank you! Your payment request has been received. You will be redirected to the secure payment gateway. A confirmation receipt will be sent to your email.</p>
+      <button class="modal-close-btn" onclick="closeModal()">Done — Close</button>
+    </div>
+  </div>
+
+  <script>
+    // ===================== NAVBAR SCROLL =====================
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ===================== MOBILE MENU =====================
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // ===================== CAROUSEL =====================
+    const track = document.getElementById('carouselTrack');
+    const cards = track.querySelectorAll('.carousel-card');
+    const dotsContainer = document.getElementById('carouselDots');
+    let currentIndex = 0;
+    let cardWidth = 328; // card + gap
+    let visibleCards = 3;
+    let autoplayTimer;
+
+    function getVisibleCards() {
+      return window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3;
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const totalDots = Math.ceil(cards.length / getVisibleCards());
+      for (let i = 0; i < totalDots; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goTo(i);
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const vis = getVisibleCards();
+      const dotIdx = Math.floor(currentIndex / vis);
+      document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === dotIdx));
+    }
+
+    function getCardWidth() {
+      const card = cards[0];
+      return card.offsetWidth + 28;
+    }
+
+    function moveCarousel(dir) {
+      const vis = getVisibleCards();
+      const max = cards.length - vis;
+      currentIndex = Math.max(0, Math.min(currentIndex + dir, max));
+      track.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
+      updateDots();
+      resetAutoplay();
+    }
+
+    function goTo(dotIdx) {
+      const vis = getVisibleCards();
+      currentIndex = Math.min(dotIdx * vis, cards.length - vis);
+      track.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
+      updateDots();
+      resetAutoplay();
+    }
+
+    function startAutoplay() {
+      autoplayTimer = setInterval(() => {
+        const vis = getVisibleCards();
+        if (currentIndex >= cards.length - vis) currentIndex = 0;
+        else currentIndex++;
+        track.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
+        updateDots();
+      }, 3200);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayTimer);
+      startAutoplay();
+    }
+
+    buildDots();
+    startAutoplay();
+
+    window.addEventListener('resize', () => {
+      buildDots();
+      currentIndex = 0;
+      track.style.transform = 'translateX(0)';
+    });
+
+    // Touch / swipe
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
+    });
+
+    // ===================== GALLERY FILTER =====================
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        const show = cat === 'all' || item.dataset.cat === cat;
+        item.style.opacity = show ? '1' : '0.2';
+        item.style.transform = show ? 'scale(1)' : 'scale(0.97)';
+        item.style.transition = 'all 0.4s ease';
+      });
+    }
+
+    // Gallery Lightbox
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        document.getElementById('lightboxImg').src = img.src;
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ===================== FEE PLAN SELECT =====================
+    function selectPlan(card, name, amount) {
+      document.querySelectorAll('.fee-card').forEach(c => c.style.outline = 'none');
+      card.style.outline = '2px solid var(--sky)';
+      document.getElementById('classLevel').value = '';
+      document.getElementById('payAmount').value = '₦' + parseInt(amount).toLocaleString();
+    }
+
+    // ===================== PAYMENT HANDLER =====================
+    function handlePayment() {
+      const name = document.getElementById('studentName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!name || !email) {
+        alert('Please fill in the student name and email before proceeding.');
+        return;
+      }
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ===================== SCROLL REVEAL =====================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ===================== COUNTER ANIMATION =====================
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current).toLocaleString();
+      }, 16);
+    }
+
+    const heroObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        document.querySelectorAll('.counter').forEach(animateCounter);
+        heroObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+
+    heroObserver.observe(document.querySelector('.hero'));
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const nav = document.getElementById('navbar');
+      if (menu.classList.contains('open') && !nav.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
