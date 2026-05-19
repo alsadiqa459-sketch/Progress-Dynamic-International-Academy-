@@ -27,192 +27,56 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--white);
-      color: var(--gray-800);
-      overflow-x: hidden;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--gray-800); overflow-x: hidden; }
 
     /* ===================== NAVBAR ===================== */
     #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 0 40px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.4s ease;
-      background: transparent;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 40px; height: 80px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.4s ease; background: transparent;
     }
+    #navbar.scrolled { background: rgba(10,22,40,0.97); backdrop-filter: blur(16px); box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
 
-    #navbar.scrolled {
-      background: rgba(10,22,40,0.97);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
-
+    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
     .logo-crest {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       background: linear-gradient(135deg, var(--mid-blue), var(--navy));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
       border: 2px solid var(--gold);
-      font-family: 'Bebas Neue', cursive;
-      font-size: 20px;
-      color: var(--white);
-      letter-spacing: 1px;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
+      font-family: 'Bebas Neue', cursive; font-size: 20px; color: var(--white);
+      letter-spacing: 1px; flex-shrink: 0; position: relative; overflow: hidden;
     }
-
-    .logo-crest::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent);
-    }
-
+    .logo-crest::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent); }
     .logo-text { line-height: 1.1; }
-    .logo-name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--white);
-      display: block;
-      letter-spacing: 0.5px;
-    }
-    .logo-tag {
-      font-size: 10px;
-      color: var(--gold);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
+    .logo-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14px; color: var(--white); display: block; letter-spacing: 0.5px; }
+    .logo-tag { font-size: 10px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
 
     nav { display: flex; align-items: center; gap: 8px; }
-
-    nav a {
-      color: rgba(255,255,255,0.85);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 8px 14px;
-      border-radius: 8px;
-      transition: all 0.2s;
-      letter-spacing: 0.3px;
-    }
+    nav a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; letter-spacing: 0.3px; }
     nav a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
-
-    .nav-cta {
-      background: var(--mid-blue) !important;
-      color: var(--white) !important;
-      padding: 10px 22px !important;
-      border-radius: 10px !important;
-      font-weight: 600 !important;
-      margin-left: 8px;
-      transition: transform 0.2s, box-shadow 0.2s !important;
-    }
+    .nav-cta { background: var(--mid-blue) !important; color: var(--white) !important; padding: 10px 22px !important; border-radius: 10px !important; font-weight: 600 !important; margin-left: 8px; transition: transform 0.2s, box-shadow 0.2s !important; }
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.4) !important; background: var(--sky) !important; }
 
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 80px; left: 0; right: 0;
-      background: rgba(10,22,40,0.98);
-      padding: 20px 40px 30px;
-      flex-direction: column;
-      gap: 4px;
-      z-index: 999;
-    }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: rgba(10,22,40,0.98); padding: 20px 40px 30px; flex-direction: column; gap: 4px; z-index: 999; }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      color: rgba(255,255,255,0.85);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-      padding: 12px 16px;
-      border-radius: 10px;
-      transition: all 0.2s;
-    }
+    .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: 10px; transition: all 0.2s; }
     .mobile-menu a:hover { background: rgba(255,255,255,0.1); color: var(--white); }
 
     /* ===================== HERO ===================== */
     .hero {
       min-height: 100vh;
-      background:
-        linear-gradient(160deg, rgba(10,22,40,0.92) 0%, rgba(26,58,107,0.85) 50%, rgba(37,99,235,0.75) 100%),
+      background: linear-gradient(160deg, rgba(10,22,40,0.92) 0%, rgba(26,58,107,0.85) 50%, rgba(37,99,235,0.75) 100%),
         url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 40px 80px;
-      position: relative;
-      overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 40px 80px; position: relative; overflow: hidden;
     }
+    .hero::before { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 120px; background: linear-gradient(to top, var(--white), transparent); }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0; right: 0;
-      height: 120px;
-      background: linear-gradient(to top, var(--white), transparent);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(37,99,235,0.25);
-      border: 1px solid rgba(59,130,246,0.4);
-      color: var(--light-blue);
-      padding: 8px 20px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      backdrop-filter: blur(8px);
-      animation: fadeInDown 0.8s ease both;
-    }
-
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,0.25); border: 1px solid rgba(59,130,246,0.4); color: var(--light-blue); padding: 8px 20px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 28px; backdrop-filter: blur(8px); animation: fadeInDown 0.8s ease both; }
     .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
 
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
@@ -220,923 +84,588 @@
     @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1.05;
-      margin-bottom: 24px;
-      animation: fadeInUp 0.9s 0.2s ease both;
-    }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 24px; animation: fadeInUp 0.9s 0.2s ease both; }
+    .hero h1 em { font-style: italic; color: var(--gold); display: block; }
+    .hero p { max-width: 580px; font-size: 1.1rem; color: rgba(255,255,255,0.78); line-height: 1.7; margin-bottom: 44px; animation: fadeInUp 0.9s 0.4s ease both; font-weight: 300; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeInUp 0.9s 0.6s ease both; }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-      display: block;
-    }
-
-    .hero p {
-      max-width: 580px;
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.7;
-      margin-bottom: 44px;
-      animation: fadeInUp 0.9s 0.4s ease both;
-      font-weight: 300;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeInUp 0.9s 0.6s ease both;
-    }
-
-    .btn-primary {
-      background: var(--mid-blue);
-      color: var(--white);
-      padding: 16px 36px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 8px 32px rgba(37,99,235,0.4);
-    }
+    .btn-primary { background: var(--mid-blue); color: var(--white); padding: 16px 36px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 15px; border: none; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(37,99,235,0.4); }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(37,99,235,0.5); background: var(--sky); }
-
-    .btn-outline {
-      background: rgba(255,255,255,0.1);
-      color: var(--white);
-      padding: 16px 36px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      border: 1px solid rgba(255,255,255,0.3);
-      cursor: pointer;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      backdrop-filter: blur(8px);
-    }
+    .btn-outline { background: rgba(255,255,255,0.1); color: var(--white); padding: 16px 36px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 15px; border: 1px solid rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; backdrop-filter: blur(8px); }
     .btn-outline:hover { background: rgba(255,255,255,0.2); transform: translateY(-3px); }
 
-    .hero-stats {
-      display: flex;
-      gap: 48px;
-      margin-top: 64px;
-      animation: fadeIn 1s 0.8s ease both;
-    }
-
+    .hero-stats { display: flex; gap: 48px; margin-top: 64px; animation: fadeIn 1s 0.8s ease both; }
     .hero-stat { text-align: center; }
-    .hero-stat-num {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2.4rem;
-      color: var(--white);
-      letter-spacing: 2px;
-    }
+    .hero-stat-num { font-family: 'Bebas Neue', cursive; font-size: 2.4rem; color: var(--white); letter-spacing: 2px; }
     .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
 
     /* ===================== SECTION UTILS ===================== */
     section { padding: 100px 60px; }
-
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--mid-blue);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .section-tag::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: var(--mid-blue);
-      border-radius: 2px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 900;
-      color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--gray-600);
-      line-height: 1.7;
-      max-width: 560px;
-      font-weight: 300;
-    }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; color: var(--mid-blue); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+    .section-tag::before { content: ''; width: 24px; height: 2px; background: var(--mid-blue); border-radius: 2px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+    .section-subtitle { font-size: 1.05rem; color: var(--gray-600); line-height: 1.7; max-width: 560px; font-weight: 300; }
 
     /* ===================== ABOUT ===================== */
-    .about {
-      background: var(--gray-100);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-visual {
-      position: relative;
-    }
-
-    .about-img-main {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      border-radius: 24px;
-      display: block;
-      background: linear-gradient(135deg, var(--mid-blue), var(--navy));
-    }
-
-    .about-img-main-inner {
-      width: 100%;
-      height: 500px;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .about-img-main-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .about-badge-float {
-      position: absolute;
-      bottom: -24px;
-      right: -24px;
-      background: var(--white);
-      border-radius: 20px;
-      padding: 24px 28px;
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      min-width: 220px;
-    }
-
-    .about-badge-icon {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, var(--mid-blue), var(--navy));
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-
-    .about-badge-num {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2rem;
-      color: var(--navy);
-      line-height: 1;
-    }
-
-    .about-badge-txt {
-      font-size: 12px;
-      color: var(--gray-600);
-      font-weight: 500;
-    }
-
-    .about-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 32px;
-    }
-
-    .about-feature {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 16px;
-      background: var(--white);
-      border-radius: 14px;
-      border: 1px solid var(--gray-200);
-      transition: all 0.3s;
-    }
+    .about { background: var(--gray-100); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-visual { position: relative; }
+    .about-img-main-inner { width: 100%; height: 500px; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .about-img-main-inner img { width: 100%; height: 100%; object-fit: cover; }
+    .about-badge-float { position: absolute; bottom: -24px; right: -24px; background: var(--white); border-radius: 20px; padding: 24px 28px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 16px; min-width: 220px; }
+    .about-badge-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--mid-blue), var(--navy)); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 22px; flex-shrink: 0; }
+    .about-badge-num { font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--navy); line-height: 1; }
+    .about-badge-txt { font-size: 12px; color: var(--gray-600); font-weight: 500; }
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .about-feature { display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); transition: all 0.3s; }
     .about-feature:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--light-blue); }
-
-    .about-feature-icon {
-      width: 38px;
-      height: 38px;
-      background: var(--ice);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--mid-blue);
-      font-size: 16px;
-      flex-shrink: 0;
-    }
+    .about-feature-icon { width: 38px; height: 38px; background: var(--ice); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--mid-blue); font-size: 16px; flex-shrink: 0; }
     .about-feature-title { font-weight: 600; font-size: 13px; color: var(--navy); margin-bottom: 2px; }
     .about-feature-sub { font-size: 12px; color: var(--gray-600); }
 
     /* ===================== CAROUSEL ===================== */
-    .carousel-section {
-      background: var(--navy);
-      padding: 100px 0;
-      overflow: hidden;
-    }
-
-    .carousel-section .inner-header {
-      padding: 0 60px;
-      margin-bottom: 60px;
-    }
-
+    .carousel-section { background: var(--navy); padding: 100px 0; overflow: hidden; }
+    .carousel-section .inner-header { padding: 0 60px; margin-bottom: 60px; }
     .carousel-section .section-tag { color: var(--sky); }
     .carousel-section .section-tag::before { background: var(--sky); }
     .carousel-section .section-title { color: var(--white); }
     .carousel-section .section-subtitle { color: rgba(255,255,255,0.6); }
-
-    .carousel-track-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 28px;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      padding: 0 60px;
-    }
-
-    .carousel-card {
-      flex: 0 0 300px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 22px;
-      overflow: hidden;
-      transition: all 0.4s;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .carousel-card:hover {
-      transform: translateY(-8px);
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(59,130,246,0.4);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-
-    .carousel-card-img {
-      height: 190px;
-      background: linear-gradient(135deg, var(--blue), var(--mid-blue));
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .carousel-card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
-    }
-
-    .carousel-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,22,40,0.7), transparent 60%);
-    }
-
-    .carousel-card-tag {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: var(--mid-blue);
-      color: var(--white);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 100px;
-    }
-
+    .carousel-track-wrap { position: relative; overflow: hidden; }
+    .carousel-track { display: flex; gap: 28px; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); padding: 0 60px; }
+    .carousel-card { flex: 0 0 300px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 22px; overflow: hidden; transition: all 0.4s; cursor: pointer; position: relative; }
+    .carousel-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.1); border-color: rgba(59,130,246,0.4); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .carousel-card-img { height: 190px; background: linear-gradient(135deg, var(--blue), var(--mid-blue)); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .carousel-card-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+    .carousel-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.7), transparent 60%); }
+    .carousel-card-tag { position: absolute; top: 14px; left: 14px; background: var(--mid-blue); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
     .carousel-card-body { padding: 24px; }
-    .carousel-card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .carousel-card-desc {
-      font-size: 13px;
-      color: rgba(255,255,255,0.58);
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .carousel-card-link {
-      color: var(--sky);
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-      transition: gap 0.2s;
-    }
+    .carousel-card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .carousel-card-desc { font-size: 13px; color: rgba(255,255,255,0.58); line-height: 1.6; margin-bottom: 16px; }
+    .carousel-card-link { color: var(--sky); font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; text-decoration: none; transition: gap 0.2s; }
     .carousel-card:hover .carousel-card-link { gap: 10px; }
-
-    .carousel-controls {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 40px 60px 0;
-    }
-
-    .carousel-btn {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.08);
-      color: var(--white);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.3s;
-    }
+    .carousel-controls { display: flex; align-items: center; gap: 20px; padding: 40px 60px 0; }
+    .carousel-btn { width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.3s; }
     .carousel-btn:hover { background: var(--mid-blue); border-color: var(--mid-blue); transform: scale(1.05); }
-
-    .carousel-dots {
-      display: flex;
-      gap: 8px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.25);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
+    .carousel-dots { display: flex; gap: 8px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s; }
     .dot.active { width: 28px; border-radius: 4px; background: var(--sky); }
 
     /* ===================== FACILITIES ===================== */
     .facilities { background: var(--white); }
-
-    .facilities-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 60px;
-    }
-
-    .facility-card {
-      border-radius: 22px;
-      overflow: hidden;
-      position: relative;
-      height: 280px;
-      cursor: pointer;
-      group: true;
-    }
-
-    .facility-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
+    .facilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+    .facility-card { border-radius: 22px; overflow: hidden; position: relative; height: 280px; cursor: pointer; }
+    .facility-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .facility-card:hover img { transform: scale(1.08); }
-
-    .facility-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.2) 60%, transparent 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 28px;
-      transition: all 0.3s;
-    }
-
+    .facility-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.2) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; transition: all 0.3s; }
     .facility-card:hover .facility-card-overlay { background: linear-gradient(to top, rgba(37,99,235,0.85) 0%, rgba(10,22,40,0.3) 60%, transparent 100%); }
-
-    .facility-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 20px;
-      margin-bottom: 12px;
-      backdrop-filter: blur(8px);
-    }
-
-    .facility-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-
-    .facility-desc {
-      font-size: 13px;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.5;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
+    .facility-icon { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 20px; margin-bottom: 12px; backdrop-filter: blur(8px); }
+    .facility-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .facility-desc { font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.5; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
     .facility-card:hover .facility-desc { max-height: 80px; }
-
     .facility-card.large { grid-row: span 2; height: 100%; min-height: 584px; }
 
     /* ===================== GALLERY ===================== */
-    .gallery-section {
-      background: var(--gray-100);
-      padding: 100px 60px;
-    }
-
-    .gallery-filter {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 40px 0 36px;
-    }
-
-    .filter-btn {
-      padding: 10px 24px;
-      border-radius: 100px;
-      border: 1px solid var(--gray-200);
-      background: var(--white);
-      color: var(--gray-600);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--mid-blue);
-      color: var(--white);
-      border-color: var(--mid-blue);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .gallery-item {
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      position: relative;
-      aspect-ratio: 1;
-    }
-
+    .gallery-section { background: var(--gray-100); padding: 100px 60px; }
+    .gallery-filter { display: flex; gap: 12px; flex-wrap: wrap; margin: 40px 0 36px; }
+    .filter-btn { padding: 10px 24px; border-radius: 100px; border: 1px solid var(--gray-200); background: var(--white); color: var(--gray-600); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--mid-blue); color: var(--white); border-color: var(--mid-blue); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .gallery-item { border-radius: 16px; overflow: hidden; cursor: pointer; position: relative; aspect-ratio: 1; }
     .gallery-item.tall { aspect-ratio: auto; grid-row: span 2; }
     .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      display: block;
-    }
-
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
     .gallery-item:hover img { transform: scale(1.06); }
-
-    .gallery-item-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(10,22,40,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
+    .gallery-item-overlay { position: absolute; inset: 0; background: rgba(10,22,40,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
     .gallery-item:hover .gallery-item-overlay { opacity: 1; }
-
     .gallery-item-overlay i { font-size: 28px; color: var(--white); }
-
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .lightbox.open { opacity: 1; pointer-events: all; }
     .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 16px; object-fit: contain; }
-    .lightbox-close {
-      position: absolute;
-      top: 24px; right: 24px;
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      border: none;
-      color: var(--white);
-      font-size: 22px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
+    .lightbox-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: var(--white); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
     .lightbox-close:hover { background: rgba(255,255,255,0.2); }
 
-    /* ===================== FEE PAYMENT ===================== */
-    .fees-section {
-      background: var(--navy);
-      padding: 100px 60px;
+    /* ─── PAGE HERO ─── */
+    .blog-hero {
+      background: linear-gradient(160deg, rgba(10,22,40,0.95) 0%, rgba(26,58,107,0.9) 50%, rgba(37,99,235,0.82) 100%),
+                  url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80') center/cover no-repeat;
+      padding: 72px 60px 52px;
       position: relative;
       overflow: hidden;
     }
-
-    .fees-section::before {
+    .blog-hero::after {
       content: '';
-      position: absolute;
-      top: -200px; right: -200px;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(37,99,235,0.15), transparent 70%);
+      position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+    .blog-hero-inner { max-width: 700px; }
+    .blog-hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(37,99,235,0.3); border: 1px solid rgba(59,130,246,0.4);
+      color: var(--light-blue); padding: 7px 18px; border-radius: 100px;
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+      margin-bottom: 20px; backdrop-filter: blur(8px);
+    }
+    .blog-hero-badge .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+    .blog-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 14px; }
+    .blog-hero h1 em { font-style: italic; color: var(--gold); }
+    .blog-hero p { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.7; font-weight: 300; }
+
+    /* ─── FEATURED POST ─── */
+    .featured-section { padding: 0 60px 0; background: var(--white); }
+    .featured-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--mid-blue); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; margin-top: 48px; }
+    .featured-label::before { content: ''; width: 28px; height: 2px; background: var(--mid-blue); border-radius: 2px; }
+
+    .featured-card {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+      border-radius: 24px; overflow: hidden;
+      box-shadow: var(--shadow-lg); border: 1px solid var(--gray-200);
+      cursor: pointer; transition: var(--transition);
+      background: var(--white);
+    }
+    .featured-card:hover { transform: translateY(-4px); box-shadow: 0 28px 70px rgba(10,22,40,0.2); }
+    .featured-img-wrap { position: relative; height: 420px; overflow: hidden; }
+    .featured-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .featured-card:hover .featured-img-wrap img { transform: scale(1.05); }
+    .featured-img-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,22,40,0.3), transparent); }
+    .featured-pin-badge {
+      position: absolute; top: 20px; left: 20px;
+      background: var(--gold); color: var(--navy);
+      font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .featured-body { padding: 44px 48px; display: flex; flex-direction: column; justify-content: center; background: var(--white); }
+    .featured-cat { display: inline-flex; align-items: center; gap: 6px; background: var(--ice); color: var(--mid-blue); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 18px; width: fit-content; }
+    .featured-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 900; color: var(--navy); line-height: 1.2; margin-bottom: 14px; }
+    .featured-excerpt { font-size: 14.5px; color: var(--gray-600); line-height: 1.75; margin-bottom: 24px; font-weight: 300; }
+    .featured-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .featured-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--light-blue); }
+    .featured-meta-text .author-name { font-size: 13px; font-weight: 600; color: var(--navy); cursor: pointer; transition: color 0.2s; }
+    .featured-meta-text .author-name:hover { color: var(--mid-blue); }
+    .featured-meta-text .meta-detail { font-size: 12px; color: var(--gray-400); display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+    .featured-meta-text .meta-detail span::before { content: '·'; margin-right: 4px; }
+    .featured-read-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--mid-blue); color: var(--white);
+      padding: 13px 28px; border-radius: 11px; font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: var(--transition); border: none; cursor: pointer;
+      width: fit-content;
+    }
+    .featured-read-btn:hover { background: var(--sky); transform: translateX(4px); }
+    .featured-share-row { display: flex; align-items: center; gap: 8px; margin-top: 18px; }
+    .share-label { font-size: 11px; color: var(--gray-400); letter-spacing: 1px; text-transform: uppercase; }
+    .share-btn {
+      width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gray-200);
+      background: var(--gray-50); display: flex; align-items: center; justify-content: center;
+      font-size: 13px; cursor: pointer; transition: var(--transition); position: relative;
+      color: var(--gray-500); text-decoration: none;
+    }
+    .share-btn:hover { transform: translateY(-2px); }
+    .share-btn.wa:hover { background: #25D366; border-color: #25D366; color: white; }
+    .share-btn.fb:hover { background: #1877F2; border-color: #1877F2; color: white; }
+    .share-btn.tw:hover { background: #000; border-color: #000; color: white; }
+    .share-btn.cp:hover { background: var(--mid-blue); border-color: var(--mid-blue); color: white; }
+    .share-btn .tooltip {
+      position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+      background: var(--navy); color: white; font-size: 10px; padding: 4px 8px; border-radius: 6px;
+      white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s;
+    }
+    .share-btn:hover .tooltip { opacity: 1; }
+
+    /* ─── BLOG CONTROLS ─── */
+    .blog-controls {
+      padding: 48px 60px 0;
+      display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;
+    }
+    .filter-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .filter-pill {
+      padding: 9px 20px; border-radius: 100px;
+      border: 1.5px solid var(--gray-200); background: var(--white);
+      color: var(--gray-600); font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: var(--transition); white-space: nowrap;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .filter-pill:hover { border-color: var(--mid-blue); color: var(--mid-blue); }
+    .filter-pill.active { background: var(--mid-blue); color: white; border-color: var(--mid-blue); }
+    .filter-pill .count { background: rgba(255,255,255,0.25); font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 100px; }
+    .filter-pill:not(.active) .count { background: var(--gray-100); color: var(--gray-500); }
+
+    .search-wrap { position: relative; flex-shrink: 0; }
+    .search-input {
+      width: 280px; padding: 10px 44px 10px 18px; border-radius: 100px;
+      border: 1.5px solid var(--gray-200); font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px; color: var(--gray-800); background: var(--gray-50);
+      outline: none; transition: var(--transition);
+    }
+    .search-input:focus { border-color: var(--mid-blue); background: white; box-shadow: 0 0 0 4px rgba(37,99,235,0.08); width: 320px; }
+    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-400); font-size: 13px; pointer-events: none; }
+    .search-clear {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      color: var(--gray-400); font-size: 12px; cursor: pointer; padding: 4px;
+      display: none; background: none; border: none;
+    }
+    .search-clear.visible { display: block; }
+
+    /* ─── POST COUNT LINE ─── */
+    .post-count-bar { padding: 20px 60px 0; font-size: 13px; color: var(--gray-500); display: flex; align-items: center; gap: 8px; }
+    .post-count-bar strong { color: var(--navy); }
+
+    /* ─── POST GRID ─── */
+    .posts-grid {
+      padding: 24px 60px 0;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
     }
 
+    .post-card {
+      background: var(--white); border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--gray-200); cursor: pointer;
+      transition: var(--transition); display: flex; flex-direction: column;
+    }
+    .post-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--light-blue); }
+
+    .post-thumb { position: relative; height: 210px; overflow: hidden; background: var(--gray-100); }
+    .post-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; loading: lazy; }
+    .post-card:hover .post-thumb img { transform: scale(1.07); }
+    .post-cat-badge {
+      position: absolute; top: 14px; left: 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 100px; backdrop-filter: blur(8px);
+    }
+    .post-share-row {
+      position: absolute; top: 14px; right: 14px;
+      display: flex; gap: 6px; opacity: 0; transition: opacity 0.3s;
+    }
+    .post-card:hover .post-share-row { opacity: 1; }
+    .post-share-mini {
+      width: 30px; height: 30px; border-radius: 50%; border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; cursor: pointer; transition: var(--transition);
+      backdrop-filter: blur(8px); color: white; position: relative;
+    }
+    .post-share-mini .tooltip {
+      position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+      background: var(--navy); color: white; font-size: 10px; padding: 3px 7px; border-radius: 5px;
+      white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s;
+    }
+    .post-share-mini:hover .tooltip { opacity: 1; }
+
+    .post-body { padding: 22px 24px; flex: 1; display: flex; flex-direction: column; }
+    .post-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.35; }
+    .post-excerpt { font-size: 13.5px; color: var(--gray-600); line-height: 1.65; margin-bottom: 16px; flex: 1; font-weight: 300; }
+    .post-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--gray-100); }
+    .post-author { display: flex; align-items: center; gap: 9px; }
+    .post-author-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--light-blue); }
+    .post-author-name { font-size: 12px; font-weight: 600; color: var(--navy); cursor: pointer; transition: color 0.2s; }
+    .post-author-name:hover { color: var(--mid-blue); }
+    .post-author-role { font-size: 10.5px; color: var(--gray-400); }
+    .post-meta-right { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+    .post-date { font-size: 11.5px; color: var(--gray-400); }
+    .post-readtime { font-size: 11px; color: var(--gray-400); display: flex; align-items: center; gap: 4px; }
+
+    /* Reaction bar */
+    .reaction-bar { display: flex; align-items: center; gap: 6px; padding: 10px 24px 16px; border-top: 1px solid var(--gray-100); }
+    .reaction-btn {
+      display: flex; align-items: center; gap: 4px;
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      border-radius: 100px; padding: 5px 11px; cursor: pointer;
+      font-size: 14px; transition: var(--transition); color: var(--gray-600);
+      font-family: 'DM Sans', sans-serif; font-size: 12px;
+    }
+    .reaction-btn:hover { border-color: var(--mid-blue); background: var(--ice); }
+    .reaction-btn.reacted { border-color: var(--mid-blue); background: var(--ice); color: var(--mid-blue); }
+    .comment-count { margin-left: auto; font-size: 12px; color: var(--gray-400); display: flex; align-items: center; gap: 5px; }
+
+    /* ─── NEWSLETTER STRIP ─── */
+    .newsletter-strip {
+      margin: 36px 60px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      border-radius: 20px; padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      flex-wrap: wrap; position: relative; overflow: hidden;
+    }
+    .newsletter-strip::before {
+      content: ''; position: absolute; right: -60px; top: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.25), transparent 70%);
+    }
+    .newsletter-text .nl-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .newsletter-text h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--white); font-weight: 700; margin-bottom: 4px; }
+    .newsletter-text p { font-size: 13.5px; color: rgba(255,255,255,0.6); }
+    .newsletter-form { display: flex; gap: 10px; flex-shrink: 0; }
+    .nl-input {
+      padding: 12px 20px; border-radius: 10px; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 13.5px;
+      background: rgba(255,255,255,0.12); color: white; width: 240px;
+      outline: none; backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .nl-input::placeholder { color: rgba(255,255,255,0.45); }
+    .nl-input:focus { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.18); }
+    .nl-btn {
+      padding: 12px 22px; border-radius: 10px; border: none;
+      background: var(--gold); color: var(--navy);
+      font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 700;
+      cursor: pointer; transition: var(--transition); white-space: nowrap;
+    }
+    .nl-btn:hover { background: #FBBF24; transform: translateY(-1px); }
+    .nl-success {
+      display: none; align-items: center; gap: 10px;
+      background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3);
+      color: #34D399; padding: 12px 22px; border-radius: 10px; font-size: 13.5px; font-weight: 600;
+    }
+
+    /* ─── PAGINATION / LOAD MORE ─── */
+    .posts-actions { padding: 40px 60px 60px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .load-more-btn {
+      padding: 14px 40px; border-radius: 12px;
+      background: var(--white); border: 1.5px solid var(--gray-200);
+      color: var(--gray-700); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 10px;
+    }
+    .load-more-btn:hover { border-color: var(--mid-blue); color: var(--mid-blue); background: var(--ice); }
+    .load-more-btn.loading .fa-spinner { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .showing-label { font-size: 13px; color: var(--gray-400); }
+
+    /* Pagination numbers */
+    .pagination { display: flex; align-items: center; gap: 8px; }
+    .page-btn {
+      width: 38px; height: 38px; border-radius: 10px; border: 1.5px solid var(--gray-200);
+      background: white; color: var(--gray-600); font-size: 13px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+    .page-btn:hover, .page-btn.active { background: var(--mid-blue); border-color: var(--mid-blue); color: white; }
+
+    /* ─── POST LIGHTBOX (full post view) ─── */
+    .post-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 2000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.35s;
+      padding: 20px;
+    }
+    .post-overlay.open { opacity: 1; pointer-events: all; }
+    .post-modal {
+      background: var(--white); border-radius: 24px; max-width: 720px; width: 100%;
+      max-height: 90vh; overflow-y: auto; transform: scale(0.94);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+    .post-overlay.open .post-modal { transform: scale(1); }
+    .post-modal-hero { position: relative; height: 280px; overflow: hidden; border-radius: 24px 24px 0 0; }
+    .post-modal-hero img { width: 100%; height: 100%; object-fit: cover; }
+    .post-modal-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.7), transparent 60%); }
+    .post-modal-close {
+      position: absolute; top: 16px; right: 16px; width: 40px; height: 40px;
+      border-radius: 50%; background: rgba(0,0,0,0.45); border: none; color: white;
+      font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px); transition: background 0.2s; z-index: 10;
+    }
+    .post-modal-close:hover { background: rgba(0,0,0,0.7); }
+    .post-modal-body { padding: 36px 44px 44px; }
+    .post-modal-cat { display: inline-flex; align-items: center; background: var(--ice); color: var(--mid-blue); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 14px; }
+    .post-modal-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+    .post-modal-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-200); }
+    .post-modal-author { display: flex; align-items: center; gap: 10px; }
+    .post-modal-author img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--light-blue); }
+    .pm-author-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+    .pm-author-role { font-size: 12px; color: var(--gray-400); }
+    .pm-date-read { display: flex; gap: 10px; color: var(--gray-400); font-size: 13px; margin-left: auto; }
+    .pm-date-read span { display: flex; align-items: center; gap: 5px; }
+    .post-modal-content { font-size: 15px; line-height: 1.85; color: var(--gray-600); }
+    .post-modal-content p { margin-bottom: 16px; }
+    .post-modal-content h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--navy); margin: 24px 0 10px; }
+    .post-modal-content blockquote { border-left: 3px solid var(--mid-blue); padding-left: 18px; margin: 20px 0; color: var(--gray-500); font-style: italic; }
+
+    /* Comment section */
+    .comment-section { padding: 0 44px 44px; border-top: 1px solid var(--gray-200); margin-top: 24px; }
+    .comment-section h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin: 24px 0 16px; }
+    .comment-input-wrap { display: flex; gap: 12px; margin-bottom: 20px; }
+    .comment-input {
+      flex: 1; padding: 12px 16px; border: 1.5px solid var(--gray-200); border-radius: 12px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--gray-800);
+      outline: none; transition: border-color 0.3s;
+    }
+    .comment-input:focus { border-color: var(--mid-blue); }
+    .comment-post-btn {
+      padding: 12px 22px; background: var(--mid-blue); color: white; border: none;
+      border-radius: 12px; font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: var(--transition); white-space: nowrap;
+    }
+    .comment-post-btn:hover { background: var(--sky); }
+    .comment-item { display: flex; gap: 12px; margin-bottom: 16px; }
+    .comment-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: var(--light-blue); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--mid-blue); }
+    .comment-bubble { background: var(--gray-50); border-radius: 0 12px 12px 12px; padding: 12px 16px; flex: 1; }
+    .comment-author-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .comment-text { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+    .comment-time { font-size: 11px; color: var(--gray-400); margin-top: 4px; }
+
+    /* ─── NO RESULTS ─── */
+    .no-results {
+      grid-column: 1/-1; text-align: center; padding: 60px 24px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+    }
+    .no-results-icon { font-size: 48px; color: var(--gray-300); }
+    .no-results h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); }
+    .no-results p { font-size: 14px; color: var(--gray-500); max-width: 340px; }
+
+    /* ─── CATEGORY COLORS ─── */
+    .cat-news { background: rgba(239,68,68,0.12); color: #DC2626; }
+    .cat-events { background: rgba(245,158,11,0.15); color: #B45309; }
+    .cat-academic { background: rgba(37,99,235,0.12); color: #1D4ED8; }
+    .cat-sports { background: rgba(16,185,129,0.12); color: #047857; }
+    .cat-arts { background: rgba(139,92,246,0.12); color: #6D28D9; }
+    .cat-staff { background: rgba(249,115,22,0.12); color: #C2410C; }
+    .cat-newsletter { background: rgba(37,99,235,0.12); color: #1D4ED8; }
+
+    .share-wa { background: rgba(37,211,102,0.75); }
+    .share-fb { background: rgba(24,119,242,0.75); }
+    .share-tw { background: rgba(0,0,0,0.55); }
+    .share-cp { background: rgba(37,99,235,0.7); }
+
+    /* ─── FOOTER ─── */
+    .blog-footer {
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 60px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .blog-footer p { color: rgba(255,255,255,0.4); font-size: 13px; }
+    .blog-footer a { color: var(--sky); text-decoration: none; font-weight: 600; }
+    .blog-footer a:hover { color: var(--light-blue); }
+
+    /* ─── REVEAL ANIMATION ─── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) { .posts-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    @media (max-width: 768px) {
+      #navbar { padding: 0 20px; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .blog-hero { padding: 56px 24px 44px; }
+      .featured-section { padding: 0 24px; }
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-img-wrap { height: 260px; }
+      .featured-body { padding: 28px 28px; }
+      .blog-controls { padding: 32px 24px 0; flex-direction: column; align-items: stretch; }
+      .search-input, .search-input:focus { width: 100%; }
+      .search-wrap { width: 100%; }
+      .post-count-bar { padding: 16px 24px 0; }
+      .posts-grid { padding: 20px 24px 0; grid-template-columns: 1fr; }
+      .newsletter-strip { padding: 28px 24px; margin: 28px 24px; flex-direction: column; }
+      .newsletter-form { flex-direction: column; width: 100%; }
+      .nl-input { width: 100%; }
+      .posts-actions { padding: 32px 24px 48px; }
+      .blog-footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+      .web-club-banner { padding: 9px 24px; }
+      .post-modal-body { padding: 24px 24px 32px; }
+      .comment-section { padding: 0 24px 32px; }
+    }
+
+    @media (max-width: 480px) { .filter-pills { gap: 8px; } .filter-pill { padding: 7px 14px; font-size: 12px; } }
+
+    /* ─── COPY TOAST ─── */
+    .copy-toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+      background: var(--navy); color: white; padding: 12px 24px; border-radius: 100px;
+      font-size: 13.5px; font-weight: 600; z-index: 9999;
+      opacity: 0; transition: opacity 0.3s; pointer-events: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .copy-toast.show { opacity: 1; }
+    /* ===================== FEE PAYMENT ===================== */
+    .fees-section { background: var(--navy); padding: 100px 60px; position: relative; overflow: hidden; }
+    .fees-section::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,0.15), transparent 70%); }
     .fees-section .section-tag { color: var(--sky); }
     .fees-section .section-tag::before { background: var(--sky); }
     .fees-section .section-title { color: var(--white); }
     .fees-section .section-subtitle { color: rgba(255,255,255,0.6); }
-
-    .fees-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      margin-top: 60px;
-      align-items: start;
-    }
-
-    .fees-plans {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .fee-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 28px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .fee-card.featured {
-      background: var(--mid-blue);
-      border-color: var(--mid-blue);
-    }
-
-    .fee-card.featured::before {
-      content: 'POPULAR';
-      position: absolute;
-      top: 16px; right: 20px;
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      padding: 4px 10px;
-      border-radius: 100px;
-    }
-
+    .fees-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; align-items: start; }
+    .fees-plans { display: flex; flex-direction: column; gap: 16px; }
+    .fee-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+    .fee-card.featured { background: var(--mid-blue); border-color: var(--mid-blue); }
+    .fee-card.featured::before { content: 'POPULAR'; position: absolute; top: 16px; right: 20px; background: var(--gold); color: var(--navy); font-size: 9px; font-weight: 800; letter-spacing: 2px; padding: 4px 10px; border-radius: 100px; }
     .fee-card:hover:not(.featured) { background: rgba(255,255,255,0.1); border-color: rgba(59,130,246,0.4); transform: translateX(4px); }
-
     .fee-level { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
     .fee-sublabel { font-size: 13px; color: rgba(255,255,255,0.55); }
     .fee-amount { font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--white); letter-spacing: 1px; }
     .fee-period { font-size: 12px; color: rgba(255,255,255,0.5); text-align: right; margin-top: 2px; }
-
-    .fee-form-card {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 44px;
-      position: relative;
-    }
-
-    .fee-form-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-
+    .fee-form-card { background: var(--white); border-radius: 24px; padding: 44px; position: relative; }
+    .fee-form-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
     .fee-form-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 32px; }
-
     .form-group { margin-bottom: 20px; }
     .form-label { font-size: 13px; font-weight: 600; color: var(--gray-800); margin-bottom: 8px; display: block; }
-
-    .form-input, .form-select {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: 1.5px solid var(--gray-200);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      color: var(--gray-800);
-      background: var(--gray-100);
-      transition: all 0.3s;
-      outline: none;
-    }
-
-    .form-input:focus, .form-select:focus {
-      border-color: var(--mid-blue);
-      background: var(--white);
-      box-shadow: 0 0 0 4px rgba(37,99,235,0.1);
-    }
-
+    .form-input, .form-select { width: 100%; padding: 14px 18px; border-radius: 12px; border: 1.5px solid var(--gray-200); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--gray-800); background: var(--gray-100); transition: all 0.3s; outline: none; }
+    .form-input:focus, .form-select:focus { border-color: var(--mid-blue); background: var(--white); box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    .pay-btn {
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, var(--mid-blue), var(--sky));
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: all 0.3s;
-      box-shadow: 0 8px 28px rgba(37,99,235,0.35);
-      margin-top: 8px;
-    }
+    .pay-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--mid-blue), var(--sky)); color: var(--white); border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s; box-shadow: 0 8px 28px rgba(37,99,235,0.35); margin-top: 8px; }
     .pay-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(37,99,235,0.5); }
-
     .secure-badge { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; font-size: 12px; color: var(--gray-400); }
 
     /* ===================== TESTIMONIALS ===================== */
     .testimonials { background: var(--ice); padding: 100px 60px; }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 60px;
-    }
-
-    .testi-card {
-      background: var(--white);
-      border-radius: 22px;
-      padding: 36px;
-      border: 1px solid var(--gray-200);
-      transition: all 0.3s;
-      position: relative;
-    }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+    .testi-card { background: var(--white); border-radius: 22px; padding: 36px; border: 1px solid var(--gray-200); transition: all 0.3s; position: relative; }
     .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--light-blue); }
-
-    .testi-quote {
-      font-size: 52px;
-      font-family: 'Playfair Display', serif;
-      color: var(--light-blue);
-      line-height: 0.6;
-      margin-bottom: 20px;
-    }
-
-    .testi-text {
-      font-size: 14.5px;
-      line-height: 1.75;
-      color: var(--gray-600);
-      margin-bottom: 28px;
-      font-style: italic;
-    }
-
+    .testi-quote { font-size: 52px; font-family: 'Playfair Display', serif; color: var(--light-blue); line-height: 0.6; margin-bottom: 20px; }
+    .testi-text { font-size: 14.5px; line-height: 1.75; color: var(--gray-600); margin-bottom: 28px; font-style: italic; }
     .testi-avatar-row { display: flex; align-items: center; gap: 14px; }
-
-    .testi-avatar {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--light-blue);
-    }
-
+    .testi-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--light-blue); }
     .testi-name { font-weight: 700; font-size: 14px; color: var(--navy); }
     .testi-role { font-size: 12px; color: var(--gray-400); }
-
     .testi-stars { color: var(--gold); font-size: 13px; margin-bottom: 16px; letter-spacing: 2px; }
 
     /* ===================== CTA BANNER ===================== */
-    .cta-banner {
-      background: linear-gradient(135deg, var(--mid-blue) 0%, var(--navy) 100%);
-      padding: 90px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-banner::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .cta-banner::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .cta-banner h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      color: var(--white);
-      margin-bottom: 16px;
-      position: relative;
-    }
-
-    .cta-banner p {
-      color: rgba(255,255,255,0.65);
-      font-size: 1rem;
-      margin-bottom: 40px;
-      position: relative;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
+    .cta-banner { background: linear-gradient(135deg, var(--mid-blue) 0%, var(--navy) 100%); padding: 90px 60px; text-align: center; position: relative; overflow: hidden; }
+    .cta-banner::before { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); }
+    .cta-banner::after { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 500px; height: 500px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); }
+    .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); color: var(--white); margin-bottom: 16px; position: relative; }
+    .cta-banner p { color: rgba(255,255,255,0.65); font-size: 1rem; margin-bottom: 40px; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
     .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
 
     /* ===================== FOOTER ===================== */
-    footer {
-      background: var(--navy);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 80px 60px 40px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 60px;
-      margin-bottom: 60px;
-    }
-
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 80px 60px 40px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
     .footer-brand .logo-name { font-size: 18px; }
     .footer-brand p { color: rgba(255,255,255,0.5); font-size: 13.5px; line-height: 1.7; margin: 20px 0 28px; }
-
     .footer-social { display: flex; gap: 12px; }
-
-    .social-btn {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      transition: all 0.3s;
-      text-decoration: none;
-    }
+    .social-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; font-size: 15px; transition: all 0.3s; text-decoration: none; }
     .social-btn:hover { background: var(--mid-blue); border-color: var(--mid-blue); color: var(--white); transform: translateY(-2px); }
-
-    .footer-col h4 {
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
+    .footer-col h4 { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col ul li a {
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
     .footer-col ul li a:hover { color: var(--sky); }
     .footer-col ul li a i { font-size: 12px; }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .footer-bottom p { color: rgba(255,255,255,0.35); font-size: 13px; }
     .footer-bottom .webclub { color: var(--sky); font-weight: 600; }
 
     /* ===================== SCROLL ANIMATION ===================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ===================== ANNOUNCEMENT TICKER ===================== */
-    .ticker-wrap {
-      background: var(--mid-blue);
-      padding: 10px 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .ticker-inner {
-      display: inline-block;
-      animation: ticker 28s linear infinite;
-      font-size: 13px;
-      color: rgba(255,255,255,0.9);
-      font-weight: 500;
-    }
-
-    @keyframes ticker {
-      0% { transform: translateX(100vw); }
-      100% { transform: translateX(-100%); }
-    }
-
+    /* ===================== TICKER ===================== */
+    .ticker-wrap { background: var(--mid-blue); padding: 10px 0; overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-block; animation: ticker 28s linear infinite; font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 500; }
+    @keyframes ticker { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
     .ticker-inner span { margin: 0 48px; }
     .ticker-inner span::before { content: '•'; color: var(--gold); margin-right: 16px; }
 
-    /* ===================== WELCOME BANNER ===================== */
-    .web-club-banner {
-      background: linear-gradient(90deg, var(--ice) 0%, var(--white) 100%);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 10px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 8px;
-      font-size: 12px;
-      color: var(--gray-600);
-    }
+    .web-club-banner { background: linear-gradient(90deg, var(--ice) 0%, var(--white) 100%); border-bottom: 1px solid var(--gray-200); padding: 10px 60px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; font-size: 12px; color: var(--gray-600); }
     .web-club-banner strong { color: var(--mid-blue); }
+
+    /* ===================== MODAL ===================== */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal { background: var(--white); border-radius: 24px; padding: 56px 48px; text-align: center; max-width: 440px; width: 90%; transform: scale(0.9); transition: transform 0.3s; }
+    .modal-overlay.open .modal { transform: scale(1); }
+    .modal-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; color: var(--white); margin: 0 auto 24px; }
+    .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 10px; }
+    .modal p { color: var(--gray-600); font-size: 14.5px; line-height: 1.6; margin-bottom: 32px; }
+    .modal-close-btn { padding: 14px 40px; background: var(--mid-blue); color: var(--white); border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+    .modal-close-btn:hover { background: var(--sky); }
 
     /* ===================== RESPONSIVE ===================== */
     @media (max-width: 1024px) {
@@ -1150,7 +679,6 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .gallery-grid { grid-template-columns: repeat(3, 1fr); }
     }
-
     @media (max-width: 768px) {
       #navbar { padding: 0 20px; }
       nav { display: none; }
@@ -1159,10 +687,7 @@
       .carousel-section .inner-header { padding: 0 24px; }
       .carousel-track { padding: 0 24px; }
       .carousel-controls { padding: 32px 24px 0; }
-      .gallery-section { padding: 70px 24px; }
-      .fees-section { padding: 70px 24px; }
-      .testimonials { padding: 70px 24px; }
-      .cta-banner { padding: 70px 24px; }
+      .gallery-section, .fees-section, .testimonials, .cta-banner { padding: 70px 24px; }
       footer { padding: 60px 24px 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 40px; }
       .facilities-grid { grid-template-columns: 1fr; }
@@ -1177,64 +702,6 @@
       .form-row { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
     }
-
-    /* Payment success modal */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 3000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-
-    .modal {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 56px 48px;
-      text-align: center;
-      max-width: 440px;
-      width: 90%;
-      transform: scale(0.9);
-      transition: transform 0.3s;
-    }
-    .modal-overlay.open .modal { transform: scale(1); }
-
-    .modal-icon {
-      width: 80px; height: 80px;
-      background: linear-gradient(135deg, #10b981, #059669);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      color: var(--white);
-      margin: 0 auto 24px;
-    }
-
-    .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 10px; }
-    .modal p { color: var(--gray-600); font-size: 14.5px; line-height: 1.6; margin-bottom: 32px; }
-
-    .modal-close-btn {
-      padding: 14px 40px;
-      background: var(--mid-blue);
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .modal-close-btn:hover { background: var(--sky); }
-
-    /* Smooth counter */
-    .counter { display: inline-block; }
   </style>
 </head>
 <body>
@@ -1259,7 +726,7 @@
 
   <!-- Navbar -->
   <header id="navbar">
-    <a href="#" class="logo">
+    <a href="index.html" class="logo">
       <div class="logo-crest">PDIA</div>
       <div class="logo-text">
         <span class="logo-name">Progress Dynamic<br>International Academy</span>
@@ -1271,6 +738,7 @@
       <a href="#programs">Programs</a>
       <a href="#facilities">Facilities</a>
       <a href="#gallery">Gallery</a>
+      <a href="#pdia-blog.html">Blog</a>
       <a href="#fees">Pay Fees</a>
       <a href="#contact">Contact</a>
       <a href="#fees" class="nav-cta">Enroll Now</a>
@@ -1286,6 +754,7 @@
     <a href="#programs" onclick="toggleMenu()">Programs</a>
     <a href="#facilities" onclick="toggleMenu()">Facilities</a>
     <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+    <a href="#pdia-blog.html" onclick="toggleMenu()">Blog</a>
     <a href="#fees" onclick="toggleMenu()">Pay Fees</a>
     <a href="#contact" onclick="toggleMenu()">Contact</a>
     <a href="#fees" onclick="toggleMenu()" style="color:var(--sky);font-weight:700;">→ Enroll Now</a>
@@ -1293,13 +762,9 @@
 
   <!-- Hero -->
   <section class="hero" id="home">
-    <div class="hero-badge"><span></span>Hardwork . Excellence .Responsibility . Fear of God . Innovation . Confidence </div>
-    <h1>
-      Shaping Tomorrow's<br>
-      <em>Leaders, Today.</em>
-    </h1>
-    <p>Progress Dynamic International Academy is Abuja's premier institution for holistic education 
-      where we nuture disciplined , efficient and confident students who will become world class leaders.</p>
+    <div class="hero-badge"><span></span>Hardwork · Excellence · Responsibility · Fear of God · Innovation · Confidence</div>
+    <h1>Shaping Tomorrow's<br><em>Leaders, Today.</em></h1>
+    <p>Progress Dynamic International Academy is Abuja's premier institution for holistic education where we nurture disciplined, efficient and confident students who will become world class leaders.</p>
     <div class="hero-btns">
       <a href="#fees" class="btn-primary"><i class="fa-solid fa-graduation-cap"></i> Begin Enrollment</a>
       <a href="#about" class="btn-outline"><i class="fa-solid fa-play-circle"></i> Discover PDIA</a>
@@ -1319,7 +784,7 @@
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num"><span class="counter" data-target="120">0</span>+</div>
-        <div class="hero-stat-label">Qualified Staff< /div>
+        <div class="hero-stat-label">Qualified Staff</div>
       </div>
     </div>
   </section>
@@ -1334,63 +799,42 @@
         <div class="about-badge-icon"><i class="fa-solid fa-trophy"></i></div>
         <div>
           <div class="about-badge-num">1st</div>
-          <div class="about-badge-txt">Best School in Abuja<br>2023 & 2024</div>
+          <div class="about-badge-txt">Best School in Abuja<br>2023 &amp; 2024</div>
         </div>
       </div>
     </div>
     <div>
       <div class="section-tag">Our Story</div>
       <h2 class="section-title">A Legacy of Academic <em style="font-style:italic;color:var(--mid-blue)">Distinction</em></h2>
-      <p class="section-subtitle"> We offer our students an excellent academic foundation that is diveres and inspire creativity
-        and confidence in each child to maximize their potential towards becoming future leaders.</p>
-      <div class="about-features" style="margin-top:32px;">
+      <p class="section-subtitle">We offer our students an excellent academic foundation that is diverse and inspires creativity and confidence in each child to maximize their potential towards becoming future leaders.</p>
+      <div class="about-features">
         <div class="about-feature">
           <div class="about-feature-icon"><i class="fa-solid fa-book-open"></i></div>
-          <div>
-            <div class="about-feature-title">Holistic Curriculum</div>
-            <div class="about-feature-sub">NERDC-aligned with British enrichment modules</div>
-          </div>
+          <div><div class="about-feature-title">Holistic Curriculum</div><div class="about-feature-sub">NERDC-aligned with British enrichment modules</div></div>
         </div>
         <div class="about-feature">
           <div class="about-feature-icon"><i class="fa-solid fa-users"></i></div>
-          <div>
-            <div class="about-feature-title">Small Class Sizes</div>
-            <div class="about-feature-sub">1:20 teacher-student ratio for personal attention</div>
-          </div>
+          <div><div class="about-feature-title">Small Class Sizes</div><div class="about-feature-sub">1:20 teacher-student ratio for personal attention</div></div>
         </div>
         <div class="about-feature">
           <div class="about-feature-icon"><i class="fa-solid fa-laptop"></i></div>
-          <div>
-            <div class="about-feature-title">Smart Classrooms</div>
-            <div class="about-feature-sub">Interactive boards and e-learning platforms</div>
-          </div>
+          <div><div class="about-feature-title">Smart Classrooms</div><div class="about-feature-sub">Interactive boards and e-learning platforms</div></div>
         </div>
         <div class="about-feature">
           <div class="about-feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-          <div>
-            <div class="about-feature-title">Safe Environment</div>
-            <div class="about-feature-sub">24/7 security & child safeguarding policy</div>
-          </div>
+          <div><div class="about-feature-title">Safe Environment</div><div class="about-feature-sub">24/7 security &amp; child safeguarding policy</div></div>
         </div>
         <div class="about-feature">
           <div class="about-feature-icon"><i class="fa-solid fa-globe"></i></div>
-          <div>
-            <div class="about-feature-title">Global Exposure</div>
-            <div class="about-feature-sub">Exchange programs & international competitions</div>
-          </div>
+          <div><div class="about-feature-title">Global Exposure</div><div class="about-feature-sub">Exchange programs &amp; international competitions</div></div>
         </div>
         <div class="about-feature">
           <div class="about-feature-icon"><i class="fa-solid fa-medal"></i></div>
-          <div>
-            <div class="about-feature-title">Award-Winning</div>
-            <div class="about-feature-sub">National & FCT academic excellence awards</div>
-          </div>
+          <div><div class="about-feature-title">Award-Winning</div><div class="about-feature-sub">National &amp; FCT academic excellence awards</div></div>
         </div>
       </div>
       <div style="margin-top:36px;">
-        <a href="#fees" class="btn-primary" style="display:inline-flex;width:auto;">
-          <i class="fa-solid fa-arrow-right"></i> Enroll Your Child
-        </a>
+        <a href="#fees" class="btn-primary" style="display:inline-flex;width:auto;"><i class="fa-solid fa-arrow-right"></i> Enroll Your Child</a>
       </div>
     </div>
   </section>
@@ -1402,195 +846,24 @@
       <h2 class="section-title">Explore Our 14 <span style="color:var(--sky)">Departments</span></h2>
       <p class="section-subtitle" style="color:rgba(255,255,255,0.6)">Every student finds their passion within our rich portfolio of academic programs, clubs, and co-curricular activities.</p>
     </div>
-
     <div class="carousel-track-wrap">
       <div class="carousel-track" id="carouselTrack">
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80" alt="Science" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Sciences</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Natural Sciences</div>
-            <div class="carousel-card-desc">Physics, Chemistry & Biology with fully equipped laboratories and hands-on experiments.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&q=80" alt="Mathematics" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">STEM</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Mathematics & Further Maths</div>
-            <div class="carousel-card-desc">From foundational numeracy to advanced calculus and statistics.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="Technology" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Technology</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Computer Science & ICT</div>
-            <div class="carousel-card-desc">Coding, robotics, web development and digital literacy for the modern world.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80" alt="Literature" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Arts</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">English Language & Literature</div>
-            <div class="carousel-card-desc">Building eloquent communicators through language mastery and critical thinking.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1554177255-61502b352de3?w=600&q=80" alt="Commerce" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Commerce</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Commerce & Economics</div>
-            <div class="carousel-card-desc">Entrepreneurship, accounting, and economics preparing future business leaders.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=600&q=80" alt="Fine Art" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Creative Arts</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Visual Arts & Crafts</div>
-            <div class="carousel-card-desc">Painting, sculpture, graphic design and digital art in a creative studio environment.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Sports" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Sports</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Physical Education & Sports</div>
-            <div class="carousel-card-desc">Football, basketball, athletics, swimming and inter-house sports competitions.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80" alt="Music" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Performing Arts</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Music & Performing Arts</div>
-            <div class="carousel-card-desc">Choral groups, drama, keyboard, guitar and orchestral performance training.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Social Studies" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Humanities</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Social Studies & Civics</div>
-            <div class="carousel-card-desc">Understanding society, governance and responsible citizenship in Nigeria and the world.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80" alt="French" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Languages</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">French & Foreign Languages</div>
-            <div class="carousel-card-desc">DELF-certified French program plus Hausa and Arabic language electives.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=600&q=80" alt="Engineering" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Engineering</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Technical & Engineering Drawing</div>
-            <div class="carousel-card-desc">AutoCAD, 3D modelling and technical drawing for future engineers and architects.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&q=80" alt="Leadership" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Leadership</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Leadership & Character Dev.</div>
-            <div class="carousel-card-desc">Student council, debate club, MUN and character formation workshops every term.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600&q=80" alt="Agriculture" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Agriculture</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Agricultural Science</div>
-            <div class="carousel-card-desc">Farm practice, crop science, livestock management and agribusiness projects.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="carousel-card">
-          <div class="carousel-card-img">
-            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80" alt="Robotics" />
-            <div class="carousel-card-overlay"></div>
-            <span class="carousel-card-tag">Innovation</span>
-          </div>
-          <div class="carousel-card-body">
-            <div class="carousel-card-title">Robotics & AI Club</div>
-            <div class="carousel-card-desc">Arduino, Raspberry Pi, machine learning fundamentals and national robotics competitions.</div>
-            <a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80" alt="Science" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Sciences</span></div><div class="carousel-card-body"><div class="carousel-card-title">Natural Sciences</div><div class="carousel-card-desc">Physics, Chemistry &amp; Biology with fully equipped laboratories and hands-on experiments.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&q=80" alt="Mathematics" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">STEM</span></div><div class="carousel-card-body"><div class="carousel-card-title">Mathematics &amp; Further Maths</div><div class="carousel-card-desc">From foundational numeracy to advanced calculus and statistics.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="Technology" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Technology</span></div><div class="carousel-card-body"><div class="carousel-card-title">Computer Science &amp; ICT</div><div class="carousel-card-desc">Coding, robotics, web development and digital literacy for the modern world.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80" alt="Literature" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Arts</span></div><div class="carousel-card-body"><div class="carousel-card-title">English Language &amp; Literature</div><div class="carousel-card-desc">Building eloquent communicators through language mastery and critical thinking.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1554177255-61502b352de3?w=600&q=80" alt="Commerce" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Commerce</span></div><div class="carousel-card-body"><div class="carousel-card-title">Commerce &amp; Economics</div><div class="carousel-card-desc">Entrepreneurship, accounting, and economics preparing future business leaders.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=600&q=80" alt="Fine Art" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Creative Arts</span></div><div class="carousel-card-body"><div class="carousel-card-title">Visual Arts &amp; Crafts</div><div class="carousel-card-desc">Painting, sculpture, graphic design and digital art in a creative studio environment.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Sports" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Sports</span></div><div class="carousel-card-body"><div class="carousel-card-title">Physical Education &amp; Sports</div><div class="carousel-card-desc">Football, basketball, athletics, swimming and inter-house sports competitions.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80" alt="Music" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Performing Arts</span></div><div class="carousel-card-body"><div class="carousel-card-title">Music &amp; Performing Arts</div><div class="carousel-card-desc">Choral groups, drama, keyboard, guitar and orchestral performance training.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Social Studies" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Humanities</span></div><div class="carousel-card-body"><div class="carousel-card-title">Social Studies &amp; Civics</div><div class="carousel-card-desc">Understanding society, governance and responsible citizenship in Nigeria and the world.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80" alt="French" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Languages</span></div><div class="carousel-card-body"><div class="carousel-card-title">French &amp; Foreign Languages</div><div class="carousel-card-desc">DELF-certified French program plus Hausa and Arabic language electives.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=600&q=80" alt="Engineering" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Engineering</span></div><div class="carousel-card-body"><div class="carousel-card-title">Technical &amp; Engineering Drawing</div><div class="carousel-card-desc">AutoCAD, 3D modelling and technical drawing for future engineers and architects.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&q=80" alt="Leadership" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Leadership</span></div><div class="carousel-card-body"><div class="carousel-card-title">Leadership &amp; Character Dev.</div><div class="carousel-card-desc">Student council, debate club, MUN and character formation workshops every term.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600&q=80" alt="Agriculture" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Agriculture</span></div><div class="carousel-card-body"><div class="carousel-card-title">Agricultural Science</div><div class="carousel-card-desc">Farm practice, crop science, livestock management and agribusiness projects.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
+        <div class="carousel-card"><div class="carousel-card-img"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80" alt="Robotics" /><div class="carousel-card-overlay"></div><span class="carousel-card-tag">Innovation</span></div><div class="carousel-card-body"><div class="carousel-card-title">Robotics &amp; AI Club</div><div class="carousel-card-desc">Arduino, Raspberry Pi, machine learning fundamentals and national robotics competitions.</div><a href="#" class="carousel-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a></div></div>
       </div>
     </div>
-
     <div class="carousel-controls">
       <button class="carousel-btn" id="prevBtn" onclick="moveCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
       <button class="carousel-btn" id="nextBtn" onclick="moveCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
@@ -1603,72 +876,15 @@
     <div class="section-tag">Our Campus</div>
     <h2 class="section-title">World-Class <span style="color:var(--mid-blue)">Facilities</span></h2>
     <p class="section-subtitle">Every corner of the PDIA campus is designed to inspire learning, creativity, health, and excellence in our students.</p>
-
-    <div class="facilities-grid" style="margin-top:60px;">
-      <div class="facility-card large">
-        <img src="https://i.postimg.cc/QMWqKkgP/IMG-3460-2.avif" alt="Main Campus" />
-        <div class="facility-card-overlay">
-          <div class="facility-icon"><i class="fa-solid fa-building-columns"></i></div>
-          <div class="facility-name">State-of-the-Art Campus</div>
-          <div class="facility-desc">Our purpose-built campus spans 10 acres in the heart of Abuja, designed to provide the ideal environment for every aspect of student development.</div>
-        </div>
-      </div>
-      <div class="facility-card">
-        <img src="https://i.postimg.cc/vBtf5P1w/IMG-3488.avif" alt="Science Lab" />
-        <div class="facility-card-overlay">
-          <div class="facility-icon"><i class="fa-solid fa-flask"></i></div>
-          <div class="facility-name">Science Laboratories</div>
-          <div class="facility-desc">Fully equipped Physics, Chemistry and Biology labs with modern instruments.</div>
-        </div>
-      </div>
-      <div class="facility-card">
-        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80" alt="Library" />
-        <div class="facility-card-overlay">
-          <div class="facility-icon"><i class="fa-solid fa-book"></i></div>
-          <div class="facility-name">Digital Library</div>
-          <div class="facility-desc">10,000+ volumes plus digital databases, reading rooms and quiet study zones.</div>
-        </div>
-      </div>
-      <div class="facility-card">
-        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80" alt="ICT Lab" />
-        <div class="facility-card-overlay">
-          <div class="facility-icon"><i class="fa-solid fa-desktop"></i></div>
-          <div class="facility-name">ICT & Computer Labs</div>
-          <div class="facility-desc">150 high-spec computers with fibre broadband and coding software suites.</div>
-        </div>
-      </div>
-      <div class="facility-card">
-        <img src="https://i.postimg.cc/Yq9F5CWx/IMG-3457.avif" alt="Sports" />
-        <div class="facility-card-overlay">
-          <div class="facility-icon"><i class="fa-solid fa-person-running"></i></div>
-          <div class="facility-name">Sports Complex</div>
-          <div class="facility-desc">Full-size football pitch, basketball courts, indoor gym and 25-metre swimming pool.</div>
-        </div>
-      </div>
-      <div class="facility-card">
-        <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Cafeteria" />
-        <div class="facility-card-overlay">
-          <div class="facility-icon"><i class="fa-solid fa-utensils"></i></div>
-          <div class="facility-name">Nutrition Centre</div>
-          <div class="facility-desc">Certified dietitian-supervised meals serving 3,000 students every school day.</div>
-        </div>
-      </div>
-      <div class="facility-card">
-        <img src="https://i.postimg.cc/HxgbcGkh/IMG-3495.avif" alt="Hostel" />
-        <div class="facility-card-overlay">
-          <div class="facility-icon"><i class="fa-solid fa-house"></i></div>
-          <div class="facility-name">Modern Classes</div>
-          <div class="facility-desc">Air-conditioned dormitories with 24/7 security for boarding students.</div>
-        </div>
-      </div>
-      <div class="facility-card">
-        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Auditorium" />
-        <div class="facility-card-overlay">
-          <div class="facility-icon"><i class="fa-solid fa-microphone"></i></div>
-          <div class="facility-name">Grand Auditorium</div>
-          <div class="facility-desc">1,500-seat air-conditioned hall for assemblies, cultural events and graduations.</div>
-        </div>
-      </div>
+    <div class="facilities-grid">
+      <div class="facility-card large"><img src="https://i.postimg.cc/QMWqKkgP/IMG-3460-2.avif" alt="Main Campus" /><div class="facility-card-overlay"><div class="facility-icon"><i class="fa-solid fa-building-columns"></i></div><div class="facility-name">State-of-the-Art Campus</div><div class="facility-desc">Our purpose-built campus spans 10 acres in the heart of Abuja, designed to provide the ideal environment for every aspect of student development.</div></div></div>
+      <div class="facility-card"><img src="https://i.postimg.cc/vBtf5P1w/IMG-3488.avif" alt="Science Lab" /><div class="facility-card-overlay"><div class="facility-icon"><i class="fa-solid fa-flask"></i></div><div class="facility-name">Science Laboratories</div><div class="facility-desc">Fully equipped Physics, Chemistry and Biology labs with modern instruments.</div></div></div>
+      <div class="facility-card"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80" alt="Library" /><div class="facility-card-overlay"><div class="facility-icon"><i class="fa-solid fa-book"></i></div><div class="facility-name">Digital Library</div><div class="facility-desc">10,000+ volumes plus digital databases, reading rooms and quiet study zones.</div></div></div>
+      <div class="facility-card"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80" alt="ICT Lab" /><div class="facility-card-overlay"><div class="facility-icon"><i class="fa-solid fa-desktop"></i></div><div class="facility-name">ICT &amp; Computer Labs</div><div class="facility-desc">150 high-spec computers with fibre broadband and coding software suites.</div></div></div>
+      <div class="facility-card"><img src="https://i.postimg.cc/Yq9F5CWx/IMG-3457.avif" alt="Sports" /><div class="facility-card-overlay"><div class="facility-icon"><i class="fa-solid fa-person-running"></i></div><div class="facility-name">Sports Complex</div><div class="facility-desc">Full-size football pitch, basketball courts, indoor gym and 25-metre swimming pool.</div></div></div>
+      <div class="facility-card"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Cafeteria" /><div class="facility-card-overlay"><div class="facility-icon"><i class="fa-solid fa-utensils"></i></div><div class="facility-name">Nutrition Centre</div><div class="facility-desc">Certified dietitian-supervised meals serving 3,000 students every school day.</div></div></div>
+      <div class="facility-card"><img src="https://i.postimg.cc/HxgbcGkh/IMG-3495.avif" alt="Classes" /><div class="facility-card-overlay"><div class="facility-icon"><i class="fa-solid fa-house"></i></div><div class="facility-name">Modern Classes</div><div class="facility-desc">Air-conditioned classrooms with 24/7 security for all students.</div></div></div>
+      <div class="facility-card"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Auditorium" /><div class="facility-card-overlay"><div class="facility-icon"><i class="fa-solid fa-microphone"></i></div><div class="facility-name">Grand Auditorium</div><div class="facility-desc">1,500-seat air-conditioned hall for assemblies, cultural events and graduations.</div></div></div>
     </div>
   </section>
 
@@ -1677,7 +893,6 @@
     <div class="section-tag">Campus Life</div>
     <h2 class="section-title">Life at <span style="color:var(--mid-blue)">PDIA</span></h2>
     <p class="section-subtitle">Moments of brilliance, friendship, competition and growth — captured at Progress Dynamic International Academy.</p>
-
     <div class="gallery-filter">
       <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
       <button class="filter-btn" onclick="filterGallery('academics', this)">Academics</button>
@@ -1685,51 +900,142 @@
       <button class="filter-btn" onclick="filterGallery('events', this)">Events</button>
       <button class="filter-btn" onclick="filterGallery('campus', this)">Campus</button>
     </div>
-
     <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item wide" data-cat="events">
-        <img src="https://i.postimg.cc/K83MYpQm/IMG-3447.jpg" alt="Graduation" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item" data-cat="academics">
-        <img src="https://i.postimg.cc/mgnwr697/IMG-3502.avif" alt="Classroom" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item tall" data-cat="campus">
-        <img src="https://i.postimg.cc/QMWqKkgP/IMG-3460-2.avif" alt="Campus" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item" data-cat="sports">
-        <img src="https://i.postimg.cc/P5vwqVKk/IMG-3449.jpg" alt="Basketball" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item" data-cat="sports">
-        <img src="https://i.postimg.cc/Yq9F5CWx/IMG-3457.avif" alt="Running" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item" data-cat="academics">
-        <img src="https://i.postimg.cc/s2SpgfsS/IMG-3487.avif" alt="Science Lab" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item" data-cat="events">
-        <img src="https://i.postimg.cc/HxgbcGkh/IMG-3495.avif" alt="Awards" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item wide" data-cat="events">
-        <img src="https://i.postimg.cc/CKf4nHHL/IMG-3498.avif" alt="School Event" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item" data-cat="campus">
-        <img src="https://i.postimg.cc/yx69jF9g/IMG-3500.avif" alt="Library" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
-      <div class="gallery-item" data-cat="academics">
-        <img src="https://i.postimg.cc/CLQ8SpGv/IMG-3452.jpg" alt="Arts" />
-        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-      </div>
+      <div class="gallery-item wide" data-cat="events"><img src="https://i.postimg.cc/K83MYpQm/IMG-3447.jpg" alt="Graduation" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item" data-cat="academics"><img src="https://i.postimg.cc/mgnwr697/IMG-3502.avif" alt="Classroom" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item tall" data-cat="campus"><img src="https://i.postimg.cc/QMWqKkgP/IMG-3460-2.avif" alt="Campus" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item" data-cat="sports"><img src="https://i.postimg.cc/P5vwqVKk/IMG-3449.jpg" alt="Basketball" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item" data-cat="sports"><img src="https://i.postimg.cc/Yq9F5CWx/IMG-3457.avif" alt="Running" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item" data-cat="academics"><img src="https://i.postimg.cc/s2SpgfsS/IMG-3487.avif" alt="Science Lab" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item" data-cat="events"><img src="https://i.postimg.cc/HxgbcGkh/IMG-3495.avif" alt="Awards" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item wide" data-cat="events"><img src="https://i.postimg.cc/CKf4nHHL/IMG-3498.avif" alt="School Event" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item" data-cat="campus"><img src="https://i.postimg.cc/yx69jF9g/IMG-3500.avif" alt="Library" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+      <div class="gallery-item" data-cat="academics"><img src="https://i.postimg.cc/CLQ8SpGv/IMG-3452.jpg" alt="Arts" /><div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
     </div>
   </section>
+<!-- Page Hero -->
+<div class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-hero-badge"><span class="dot"></span>School News & Updates</div>
+    <h1>The PDIA <em>Chronicle</em></h1>
+    <p>Your daily source for school news, academic highlights, sports achievements, staff spotlights, and everything happening at Progress Dynamic International Academy.</p>
+  </div>
+</div>
 
+<!-- Featured Post -->
+<div class="featured-section reveal">
+  <div class="featured-label"><i class="fa-solid fa-star"></i> Featured Story</div>
+  <div class="featured-card" onclick="openPost(0)">
+    <div class="featured-img-wrap">
+      <img src="https://i.postimg.cc/K83MYpQm/IMG-3447.jpg" alt="PDIA Students Celebrate WAEC Results" loading="lazy" />
+      <div class="featured-img-overlay"></div>
+      <span class="featured-pin-badge"><i class="fa-solid fa-thumbtack"></i> Pinned</span>
+    </div>
+    <div class="featured-body">
+      <div class="featured-cat"><i class="fa-solid fa-graduation-cap"></i> Academic</div>
+      <h2 class="featured-title">PDIA Achieves 100% Distinction Rate in 2025 WAEC — A Historic First for Abuja!</h2>
+      <p class="featured-excerpt">For the first time in the school's 26-year history, every single SS3 candidate at Progress Dynamic International Academy scored distinctions across all subjects in the West African Senior School Certificate Examination. Principal Mrs. Adaora Emeka calls it "the proudest moment in PDIA's story."</p>
+      <div class="featured-meta">
+        <img class="featured-avatar" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt="Mrs. Chinyere Okwu" />
+        <div class="featured-meta-text">
+          <div class="author-name" onclick="event.stopPropagation(); filterByAuthor('Mrs. Chinyere Okwu')">Mrs. Chinyere Okwu</div>
+          <div class="meta-detail">Head of Academics<span>May 14, 2025</span><span>5 min read</span></div>
+        </div>
+      </div>
+      <button class="featured-read-btn" onclick="event.stopPropagation(); openPost(0)">
+        Read Full Story <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <div class="featured-share-row">
+        <span class="share-label">Share:</span>
+        <button class="share-btn wa" onclick="event.stopPropagation(); sharePost('wa', 'PDIA achieves 100% WAEC distinction!')" aria-label="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="tooltip">WhatsApp</span></button>
+        <button class="share-btn fb" onclick="event.stopPropagation(); sharePost('fb')" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f"></i><span class="tooltip">Facebook</span></button>
+        <button class="share-btn tw" onclick="event.stopPropagation(); sharePost('tw')" aria-label="Share on X"><i class="fa-brands fa-x-twitter"></i><span class="tooltip">X / Twitter</span></button>
+        <button class="share-btn cp" onclick="event.stopPropagation(); copyLink()" aria-label="Copy link"><i class="fa-solid fa-link"></i><span class="tooltip">Copy Link</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blog Controls -->
+<div class="blog-controls">
+  <div class="filter-pills" role="group" aria-label="Filter posts by category">
+    <button class="filter-pill active" onclick="filterCat('all', this)" tabindex="0">All <span class="count" id="count-all">24</span></button>
+    <button class="filter-pill" onclick="filterCat('news', this)" tabindex="0"><i class="fa-solid fa-newspaper"></i> News <span class="count" id="count-news">6</span></button>
+    <button class="filter-pill" onclick="filterCat('events', this)" tabindex="0"><i class="fa-solid fa-calendar-star"></i> Events <span class="count" id="count-events">4</span></button>
+    <button class="filter-pill" onclick="filterCat('academic', this)" tabindex="0"><i class="fa-solid fa-graduation-cap"></i> Academic <span class="count" id="count-academic">5</span></button>
+    <button class="filter-pill" onclick="filterCat('sports', this)" tabindex="0"><i class="fa-solid fa-futbol"></i> Sports <span class="count" id="count-sports">4</span></button>
+    <button class="filter-pill" onclick="filterCat('arts', this)" tabindex="0"><i class="fa-solid fa-palette"></i> Arts <span class="count" id="count-arts">3</span></button>
+    <button class="filter-pill" onclick="filterCat('staff', this)" tabindex="0"><i class="fa-solid fa-user-tie"></i> Staff Spotlight <span class="count" id="count-staff">2</span></button>
+  </div>
+  <div class="search-wrap">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input class="search-input" type="search" id="searchInput" placeholder="Search news and stories…" oninput="handleSearch(this)" aria-label="Search blog posts" />
+    <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+</div>
+
+<!-- Post count -->
+<div class="post-count-bar" id="postCountBar">Showing <strong id="showingCount">9</strong> of <strong id="totalCount">24</strong> stories</div>
+
+<!-- Post Grid -->
+<div class="posts-grid" id="postsGrid"></div>
+
+<!-- Newsletter Strip (injected between rows by JS) -->
+
+<!-- Load More -->
+<div class="posts-actions">
+  <div class="pagination" id="pagination"></div>
+  <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">
+    <i class="fa-solid fa-rotate-right"></i> Load more stories
+  </button>
+  <div class="showing-label" id="showingLabel">Showing 9 of 24 stories</div>
+</div>
+
+<!-- Post Overlay Modal -->
+<div class="post-overlay" id="postOverlay" onclick="closePost(event)">
+  <div class="post-modal" id="postModal">
+    <div class="post-modal-hero">
+      <img id="modalImg" src="" alt="Post image" />
+      <div class="post-modal-hero-overlay"></div>
+      <button class="post-modal-close" onclick="closePostDirect()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="post-modal-body">
+      <div class="post-modal-cat" id="modalCat">Academic</div>
+      <h2 class="post-modal-title" id="modalTitle">Post Title</h2>
+      <div class="post-modal-meta">
+        <div class="post-modal-author">
+          <img id="modalAvatar" src="" alt="Author" />
+          <div>
+            <div class="pm-author-name" id="modalAuthorName">Author</div>
+            <div class="pm-author-role" id="modalAuthorRole">Role</div>
+          </div>
+        </div>
+        <div class="pm-date-read">
+          <span><i class="fa-regular fa-calendar"></i> <span id="modalDate"></span></span>
+          <span><i class="fa-regular fa-clock"></i> <span id="modalReadtime"></span></span>
+        </div>
+      </div>
+      <div class="post-modal-content" id="modalContent"></div>
+    </div>
+    <div class="comment-section">
+      <h4><i class="fa-regular fa-comments"></i> Discussion</h4>
+      <div class="comment-input-wrap">
+        <input class="comment-input" type="text" placeholder="Leave a comment as a parent, student or staff…" id="commentInput" />
+        <button class="comment-post-btn" onclick="postComment()"><i class="fa-solid fa-paper-plane"></i> Post</button>
+      </div>
+      <div id="commentsList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Copy Toast -->
+<div class="copy-toast" id="copyToast"><i class="fa-solid fa-check"></i> Link copied to clipboard!</div>
+
+<!-- Footer -->
+<footer class="blog-footer">
+  <p>© 2025 Progress Dynamic International Academy, Abuja. All rights reserved.</p>
+  <p>Blog maintained by the <a href="#">PDIA Web Development Club</a> 🚀</p>
+</footer>
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
@@ -1743,177 +1049,43 @@
       <h2 class="section-title">Invest in <span style="color:var(--sky)">Your Child's Future</span></h2>
       <p class="section-subtitle">Transparent and competitive fees across all levels. Pay securely online in minutes.</p>
     </div>
-
     <div class="fees-layout">
       <div class="fees-plans reveal">
-        <div class="fee-card" onclick="selectPlan(this, 'Early Years – Crèche/Nursery', '150000')">
-          <div>
-            <div class="fee-level">Early Years (Crèche/Nursery)</div>
-            <div class="fee-sublabel">Ages 0 – 5 · Full Daycare + Preschool</div>
-          </div>
-          <div>
-            <div class="fee-amount">₦150k</div>
-            <div class="fee-period">per term</div>
-          </div>
-        </div>
-        <div class="fee-card" onclick="selectPlan(this, 'Lower Primary – Basic 1–3', '180000')">
-          <div>
-            <div class="fee-level">Lower Primary (Basic 1–3)</div>
-            <div class="fee-sublabel">Ages 6 – 8 · Foundation Learning</div>
-          </div>
-          <div>
-            <div class="fee-amount">₦180k</div>
-            <div class="fee-period">per term</div>
-          </div>
-        </div>
-        <div class="fee-card featured" onclick="selectPlan(this, 'Upper Primary – Basic 4–6', '210000')">
-          <div>
-            <div class="fee-level">Upper Primary (Basic 4–6)</div>
-            <div class="fee-sublabel">Ages 9 – 12 · Accelerated Programme</div>
-          </div>
-          <div>
-            <div class="fee-amount">₦210k</div>
-            <div class="fee-period">per term</div>
-          </div>
-        </div>
-        <div class="fee-card" onclick="selectPlan(this, 'Junior Secondary – JSS 1–3', '260000')">
-          <div>
-            <div class="fee-level">Junior Secondary (JSS 1–3)</div>
-            <div class="fee-sublabel">Ages 12 – 15 · BECE Preparation</div>
-          </div>
-          <div>
-            <div class="fee-amount">₦260k</div>
-            <div class="fee-period">per term</div>
-          </div>
-        </div>
-        <div class="fee-card" onclick="selectPlan(this, 'Senior Secondary – SS 1–3', '310000')">
-          <div>
-            <div class="fee-level">Senior Secondary (SS 1–3)</div>
-            <div class="fee-sublabel">Ages 15 – 18 · WAEC/NECO/JAMB Intensive</div>
-          </div>
-          <div>
-            <div class="fee-amount">₦310k</div>
-            <div class="fee-period">per term</div>
-          </div>
-        </div>
+        <div class="fee-card" onclick="selectPlan(this,'Early Years – Crèche/Nursery','150000')"><div><div class="fee-level">Early Years (Crèche/Nursery)</div><div class="fee-sublabel">Ages 0 – 5 · Full Daycare + Preschool</div></div><div><div class="fee-amount">₦150k</div><div class="fee-period">per term</div></div></div>
+        <div class="fee-card" onclick="selectPlan(this,'Lower Primary – Basic 1–3','180000')"><div><div class="fee-level">Lower Primary (Basic 1–3)</div><div class="fee-sublabel">Ages 6 – 8 · Foundation Learning</div></div><div><div class="fee-amount">₦180k</div><div class="fee-period">per term</div></div></div>
+        <div class="fee-card featured" onclick="selectPlan(this,'Upper Primary – Basic 4–6','210000')"><div><div class="fee-level">Upper Primary (Basic 4–6)</div><div class="fee-sublabel">Ages 9 – 12 · Accelerated Programme</div></div><div><div class="fee-amount">₦210k</div><div class="fee-period">per term</div></div></div>
+        <div class="fee-card" onclick="selectPlan(this,'Junior Secondary – JSS 1–3','260000')"><div><div class="fee-level">Junior Secondary (JSS 1–3)</div><div class="fee-sublabel">Ages 12 – 15 · BECE Preparation</div></div><div><div class="fee-amount">₦260k</div><div class="fee-period">per term</div></div></div>
+        <div class="fee-card" onclick="selectPlan(this,'Senior Secondary – SS 1–3','310000')"><div><div class="fee-level">Senior Secondary (SS 1–3)</div><div class="fee-sublabel">Ages 15 – 18 · WAEC/NECO/JAMB Intensive</div></div><div><div class="fee-amount">₦310k</div><div class="fee-period">per term</div></div></div>
       </div>
-
       <div class="fee-form-card reveal">
         <div class="fee-form-title">Make a Payment</div>
         <div class="fee-form-sub">Fill in the details below to proceed with your fee payment securely.</div>
-
-        <div class="form-group">
-          <label class="form-label">Student's Full Name</label>
-          <input type="text" class="form-input" placeholder="e.g. Amara Okonkwo" id="studentName" />
-        </div>
-
+        <div class="form-group"><label class="form-label">Student's Full Name</label><input type="text" class="form-input" placeholder="e.g. Amara Okonkwo" id="studentName" /></div>
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Admission Number</label>
-            <input type="text" class="form-input" placeholder="PDIA/2024/0001" id="admNo" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Class Level</label>
-            <select class="form-select" id="classLevel">
-              <option value="">— Select Level —</option>
-              <option>Crèche / Nursery</option>
-              <option>Primary 1 – 3</option>
-              <option>Primary 4 – 6</option>
-              <option>JSS 1 – 3</option>
-              <option>SS 1 – 3</option>
-            </select>
-          </div>
+          <div class="form-group"><label class="form-label">Admission Number</label><input type="text" class="form-input" placeholder="PDIA/2024/0001" id="admNo" /></div>
+          <div class="form-group"><label class="form-label">Class Level</label><select class="form-select" id="classLevel"><option value="">— Select Level —</option><option>Crèche / Nursery</option><option>Primary 1 – 3</option><option>Primary 4 – 6</option><option>JSS 1 – 3</option><option>SS 1 – 3</option></select></div>
         </div>
-
-        <div class="form-group">
-          <label class="form-label">Payment Category</label>
-          <select class="form-select" id="payCategory">
-            <option>Tuition Fee</option>
-            <option>Hostel / Boarding</option>
-            <option>Books & Materials</option>
-            <option>Examination Fee</option>
-            <option>Development Levy</option>
-            <option>Extracurricular Activities</option>
-          </select>
-        </div>
-
+        <div class="form-group"><label class="form-label">Payment Category</label><select class="form-select" id="payCategory"><option>Tuition Fee</option><option>Hostel / Boarding</option><option>Books &amp; Materials</option><option>Examination Fee</option><option>Development Levy</option><option>Extracurricular Activities</option></select></div>
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Amount (₦)</label>
-            <input type="text" class="form-input" placeholder="e.g. 210,000" id="payAmount" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Academic Term</label>
-            <select class="form-select" id="term">
-              <option>First Term 2025/2026</option>
-              <option>Second Term 2025/2026</option>
-              <option>Third Term 2025/2026</option>
-            </select>
-          </div>
+          <div class="form-group"><label class="form-label">Amount (₦)</label><input type="text" class="form-input" placeholder="e.g. 210,000" id="payAmount" /></div>
+          <div class="form-group"><label class="form-label">Academic Term</label><select class="form-select" id="term"><option>First Term 2025/2026</option><option>Second Term 2025/2026</option><option>Third Term 2025/2026</option></select></div>
         </div>
-
-        <div class="form-group">
-          <label class="form-label">Parent / Guardian Email</label>
-          <input type="email" class="form-input" placeholder="parent@email.com" id="email" />
-        </div>
-
-        <button  class="pay-btn" onclick="handlePayment()">
-          <i class="fa-solid fa-lock"></i>  <a href="https://pdia.mykid.school/"></a>Proceed to Secure Payment
-        </button>
-
-        <div class="secure-badge">
-          <i class="fa-solid fa-shield-halved" style="color:#10b981"></i>
-          SSL Encrypted · Flutterwave / Paystack Secured
-        </div>
+        <div class="form-group"><label class="form-label">Parent / Guardian Email</label><input type="email" class="form-input" placeholder="parent@email.com" id="email" /></div>
+        <button class="pay-btn" onclick="handlePayment()"><i class="fa-solid fa-lock"></i> Proceed to Secure Payment</button>
+        <div class="secure-badge"><i class="fa-solid fa-shield-halved" style="color:#10b981"></i> SSL Encrypted · Flutterwave / Paystack Secured</div>
       </div>
     </div>
   </section>
 
   <!-- Testimonials -->
   <section class="testimonials reveal" id="testimonials">
-    <div class="section-tag">Parent & Student Voices</div>
+    <div class="section-tag">Parent &amp; Student Voices</div>
     <h2 class="section-title">What Our <span style="color:var(--mid-blue)">Community</span> Says</h2>
     <p class="section-subtitle">Thousands of families trust PDIA with their most precious investment — their children's future.</p>
-
     <div class="testimonials-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"</div>
-        <p class="testi-text">My daughter joined PDIA in Primary 3 and has blossomed beyond recognition. The teachers are devoted, the environment is safe, and her academic performance has been extraordinary.</p>
-        <div class="testi-avatar-row">
-          <img class="testi-avatar" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt="Mrs Adaeze Nwosu" />
-          <div>
-            <div class="testi-name">Mrs. Adaeze Nwosu</div>
-            <div class="testi-role">Parent · Asokoro, Abuja</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"</div>
-        <p class="testi-text">I got six distinctions in my WAEC because of the relentless support from PDIA teachers. The extra classes, the labs, the discipline — PDIA made me. I'm now studying Medicine at UniAbuja.</p>
-        <div class="testi-avatar-row">
-          <img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Emeka Obi" />
-          <div>
-            <div class="testi-name">Emeka Obi</div>
-            <div class="testi-role">Alumni, Class of 2022</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"</div>
-        <p class="testi-text">The management's transparency with fees and school updates via the portal is commendable. I always know what's happening with my son's education. Best school in Abuja, no question.</p>
-        <div class="testi-avatar-row">
-          <img class="testi-avatar" src="https://i.postimg.cc/7LqBSgG7/Chat-GPT-Image-May-5-2026-04-29-08-AM.png" alt="Mr. Garba Usman" />
-          <div>
-            <div class="testi-name">Mr. Garba Usman</div>
-            <div class="testi-role">Parent · Wuse II, Abuja</div>
-          </div>
-        </div>
-      </div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-quote">"</div><p class="testi-text">My daughter joined PDIA in Primary 3 and has blossomed beyond recognition. The teachers are devoted, the environment is safe, and her academic performance has been extraordinary.</p><div class="testi-avatar-row"><img class="testi-avatar" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt="Mrs Adaeze Nwosu" /><div><div class="testi-name">Mrs. Adaeze Nwosu</div><div class="testi-role">Parent · Asokoro, Abuja</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-quote">"</div><p class="testi-text">I got six distinctions in my WAEC because of the relentless support from PDIA teachers. The extra classes, the labs, the discipline — PDIA made me. I'm now studying Medicine at UniAbuja.</p><div class="testi-avatar-row"><img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Emeka Obi" /><div><div class="testi-name">Emeka Obi</div><div class="testi-role">Alumni, Class of 2022</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-quote">"</div><p class="testi-text">The management's transparency with fees and school updates via the portal is commendable. I always know what's happening with my son's education. Best school in Abuja, no question.</p><div class="testi-avatar-row"><img class="testi-avatar" src="https://i.postimg.cc/7LqBSgG7/Chat-GPT-Image-May-5-2026-04-29-08-AM.png" alt="Mr. Garba Usman" /><div><div class="testi-name">Mr. Garba Usman</div><div class="testi-role">Parent · Wuse II, Abuja</div></div></div></div>
     </div>
   </section>
 
@@ -1945,9 +1117,8 @@
           <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
           <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
           <a href="#" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
-       </div>
+        </div>
       </div>
-
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
@@ -1956,14 +1127,13 @@
           <li><a href="#facilities"><i class="fa-solid fa-chevron-right"></i> Our Facilities</a></li>
           <li><a href="#gallery"><i class="fa-solid fa-chevron-right"></i> Gallery</a></li>
           <li><a href="#fees"><i class="fa-solid fa-chevron-right"></i> Pay School Fees</a></li>
-          <li><a href="#testimonials"><i class="fa-solid fa-chevron-right"></i> Testimonials</a></li>
+          <li><a href="pdia-blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; News</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Academics</h4>
         <ul>
-          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Nursery & Crèche</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Nursery &amp; Crèche</a></li>
           <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Primary School</a></li>
           <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Junior Secondary</a></li>
           <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Senior Secondary</a></li>
@@ -1971,11 +1141,10 @@
           <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Student Portal</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Contact Us</h4>
         <ul>
-          <li><a href="#"><i class="fa-solid fa-location-dot"></i> Behind Tomaville Plaza, Penthouse III Estate,Airport Road, Abuja, Nigeria</a></li>
+          <li><a href="#"><i class="fa-solid fa-location-dot"></i> Behind Tomaville Plaza, Penthouse III Estate, Airport Road, Abuja, Nigeria</a></li>
           <li><a href="tel:+2348012345678"><i class="fa-solid fa-phone"></i> +234 801 234 5678</a></li>
           <li><a href="tel:+2348087654321"><i class="fa-solid fa-phone"></i> +234 808 765 4321</a></li>
           <li><a href="mailto:info@pdia.edu.ng"><i class="fa-solid fa-envelope"></i> info@pdia.edu.ng</a></li>
@@ -1984,10 +1153,9 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <p>© 2025 Progress Dynamic International Academy, Abuja. All rights reserved.</p>
-      <p>Website designed & developed by the <span class="webclub">PDIA Web Development Club</span> 🚀</p>
+      <p>Website designed &amp; developed by the <span class="webclub">PDIA Web Development Club</span> 🚀</p>
     </div>
   </footer>
 
@@ -2002,29 +1170,24 @@
   </div>
 
   <script>
-    // ===================== NAVBAR SCROLL =====================
+    // Navbar scroll
     window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      nav.classList.toggle('scrolled', window.scrollY > 60);
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // ===================== MOBILE MENU =====================
+    // Mobile menu
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
     }
 
-    // ===================== CAROUSEL =====================
+    // Carousel
     const track = document.getElementById('carouselTrack');
     const cards = track.querySelectorAll('.carousel-card');
     const dotsContainer = document.getElementById('carouselDots');
     let currentIndex = 0;
-    let cardWidth = 328; // card + gap
-    let visibleCards = 3;
     let autoplayTimer;
 
-    function getVisibleCards() {
-      return window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3;
-    }
+    function getVisibleCards() { return window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3; }
 
     function buildDots() {
       dotsContainer.innerHTML = '';
@@ -2043,61 +1206,42 @@
       document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === dotIdx));
     }
 
-    function getCardWidth() {
-      const card = cards[0];
-      return card.offsetWidth + 28;
-    }
+    function getCardWidth() { return cards[0].offsetWidth + 28; }
 
     function moveCarousel(dir) {
       const vis = getVisibleCards();
       const max = cards.length - vis;
       currentIndex = Math.max(0, Math.min(currentIndex + dir, max));
       track.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
-      updateDots();
-      resetAutoplay();
+      updateDots(); resetAutoplay();
     }
 
     function goTo(dotIdx) {
       const vis = getVisibleCards();
       currentIndex = Math.min(dotIdx * vis, cards.length - vis);
       track.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
-      updateDots();
-      resetAutoplay();
+      updateDots(); resetAutoplay();
     }
 
     function startAutoplay() {
       autoplayTimer = setInterval(() => {
         const vis = getVisibleCards();
-        if (currentIndex >= cards.length - vis) currentIndex = 0;
-        else currentIndex++;
+        if (currentIndex >= cards.length - vis) currentIndex = 0; else currentIndex++;
         track.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
         updateDots();
       }, 3200);
     }
 
-    function resetAutoplay() {
-      clearInterval(autoplayTimer);
-      startAutoplay();
-    }
+    function resetAutoplay() { clearInterval(autoplayTimer); startAutoplay(); }
 
-    buildDots();
-    startAutoplay();
+    buildDots(); startAutoplay();
+    window.addEventListener('resize', () => { buildDots(); currentIndex = 0; track.style.transform = 'translateX(0)'; });
 
-    window.addEventListener('resize', () => {
-      buildDots();
-      currentIndex = 0;
-      track.style.transform = 'translateX(0)';
-    });
-
-    // Touch / swipe
     let touchStartX = 0;
     track.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
-    track.addEventListener('touchend', e => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
-    });
+    track.addEventListener('touchend', e => { const diff = touchStartX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1); });
 
-    // ===================== GALLERY FILTER =====================
+    // Gallery filter
     function filterGallery(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -2108,64 +1252,619 @@
         item.style.transition = 'all 0.4s ease';
       });
     }
+// DATA — Blog Posts
+// ─────────────────────────────────────
+const AUTHORS = {
+  chinyere: { name: 'Mrs. Chinyere Okwu', role: 'Head of Academics', avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80' },
+  emeka: { name: 'Mr. Emeka Eze', role: 'Sports Coordinator', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80' },
+  fatima: { name: 'Mrs. Fatima Bello', role: 'Head of Arts', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80' },
+  garba: { name: 'Mr. Garba Yusuf', role: 'ICT Coordinator', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80' },
+  adaeze: { name: 'Mrs. Adaeze Nwosu', role: 'School Counsellor', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80' },
+  principal: { name: 'Mrs. Adaora Emeka', role: 'Principal', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80' },
+};
 
-    // Gallery Lightbox
+const ALL_POSTS = [
+  // FEATURED (index 0)
+  {
+    id: 0, cat: 'academic', title: 'PDIA Achieves 100% Distinction Rate in 2025 WAEC — A Historic First!',
+    excerpt: 'Every single SS3 candidate scored distinctions across all subjects — a proud milestone in our 26-year history.',
+    img: 'https://i.postimg.cc/K83MYpQm/IMG-3447.jpg',
+    author: 'chinyere', date: 'May 14, 2025', readtime: '5 min', reactions: { '👍': 42, '❤️': 31, '⭐': 18 },
+    comments: [{ name: 'A. Ibrahim', text: 'Congratulations to all students and teachers! Well deserved.', time: '2h ago' }],
+    fullContent: `<p>In an unprecedented academic achievement, every single SS3 candidate at Progress Dynamic International Academy (PDIA) scored distinctions across all their WAEC subjects in the 2025 West African Senior School Certificate Examination.</p><h3>A Historic Milestone</h3><p>Principal Mrs. Adaora Emeka received the results with tears of joy. "This is the proudest moment in PDIA's 26-year story. Our teachers gave everything, our students believed in themselves, and today we celebrate together," she said.</p><p>The school's WAEC coordinator, Mrs. Chinyere Okwu, attributed the result to the school's intensive WAEC Boot Camp held every Easter holiday, rigorous mock examinations, and a dedicated team of subject specialists.</p><blockquote>"We didn't just teach for the exam — we taught our students how to think, how to reason, and how to perform under pressure."</blockquote><h3>What Happens Next</h3><p>Many of the graduating students have already received offers from top universities including UniAbuja, OAU, UNILAG and institutions abroad. The school will celebrate with a Distinction Gala Dinner on June 1st, 2025, to which all parents are cordially invited.</p>`
+  },
+  {
+    id: 1, cat: 'sports', title: 'PDIA Football Team Wins FCT Inter-Schools Championship 2025',
+    excerpt: 'Our Under-17 squad clinched the FCT championship title with a dramatic 3-2 victory in the final against Government Secondary School, Garki.',
+    img: 'https://i.postimg.cc/P5vwqVKk/IMG-3449.jpg',
+    author: 'emeka', date: 'May 10, 2025', readtime: '3 min', reactions: { '👍': 58, '❤️': 22, '⭐': 14 },
+    comments: [{ name: 'Parent', text: 'Our boys are amazing! So proud!', time: '1d ago' }],
+    fullContent: `<p>The PDIA Under-17 football squad brought the FCT Inter-Schools Championship trophy home after a breathtaking final at the National Stadium in Abuja.</p><p>Captain Aminu Suleiman scored the winning goal in the 87th minute to seal a 3-2 victory against Government Secondary School, Garki — a school that had held the title for three consecutive years.</p><h3>Coach Speaks</h3><p>Sports Coordinator Mr. Emeka Eze said the victory was the result of six months of early-morning training sessions. "These boys sacrificed their comfort for the school. I am beyond proud of every single one of them."</p><blockquote>"Football teaches discipline, teamwork, and resilience — values that will serve our students far beyond the pitch."</blockquote>`
+  },
+  {
+    id: 2, cat: 'events', title: 'Annual Cultural Day 2025 — A Celebration of Nigeria\'s Diversity',
+    excerpt: 'Students from all 36 states showcased traditional attire, dances, foods, and crafts at this year\'s spectacular Cultural Day celebration.',
+    img: 'https://i.postimg.cc/CKf4nHHL/IMG-3498.avif',
+    author: 'fatima', date: 'May 7, 2025', readtime: '4 min', reactions: { '👍': 76, '❤️': 54, '⭐': 29 },
+    comments: [],
+    fullContent: `<p>PDIA's Annual Cultural Day 2025 was a magnificent tapestry of colours, music, food, and dance. Students representing all 36 Nigerian states filled the school grounds with energy and pride.</p><p>The event, themed "One Nation, Many Stories," featured traditional dances from the Igbo, Yoruba, Hausa, Efik, Tiv, Nupe, and over 20 other ethnic groups. Parents, alumni, and invited guests were treated to a dazzling display of Nigeria's cultural richness.</p><h3>Best Display Award</h3><p>JSS 2B won the Best Cultural Display award for their spectacular recreation of a Benin Kingdom Royal Court, complete with hand-crafted ceremonial props. Mrs. Fatima Bello, Head of Arts, coordinated the entire event over three months.</p>`
+  },
+  {
+    id: 3, cat: 'news', title: 'PDIA Launches State-of-the-Art Robotics & AI Laboratory',
+    excerpt: 'Our new ₦45 million Robotics and Artificial Intelligence lab is officially open, featuring Arduino kits, Raspberry Pi stations, and machine learning workstations.',
+    img: 'https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80',
+    author: 'garba', date: 'May 4, 2025', readtime: '4 min', reactions: { '👍': 63, '❤️': 41, '⭐': 33 },
+    comments: [{ name: 'Tech Parent', text: 'Finally! Our kids deserve world-class tech facilities.', time: '3d ago' }],
+    fullContent: `<p>Progress Dynamic International Academy has officially commissioned a brand-new Robotics and Artificial Intelligence Laboratory, making it one of the most technologically advanced secondary school labs in Abuja.</p><h3>What's Inside the Lab</h3><p>The ₦45 million facility houses 40 Arduino Uno and Raspberry Pi starter kits, 20 high-performance workstations for machine learning projects, a 3D printing station, and a drone programming bay. All equipment was sourced from reputable STEM suppliers in the UK and USA.</p><p>ICT Coordinator Mr. Garba Yusuf said the lab will be integrated into the curriculum from the new academic session. "We want every PDIA student — from JSS1 to SS3 — to be comfortable with artificial intelligence before they leave this school."</p><blockquote>"Africa's future will be built by African coders, engineers, and innovators — and PDIA will lead that charge."</blockquote>`
+  },
+  {
+    id: 4, cat: 'academic', title: 'Scholarship Alert: 15 PDIA Students Win Federal Government Bursary',
+    excerpt: 'Fifteen outstanding PDIA students have been awarded the Federal Government Unity Schools Bursary for the 2025/2026 academic year.',
+    img: 'https://i.postimg.cc/mgnwr697/IMG-3502.avif',
+    author: 'chinyere', date: 'Apr 28, 2025', readtime: '3 min', reactions: { '👍': 47, '❤️': 38, '⭐': 22 },
+    comments: [],
+    fullContent: `<p>Fifteen exceptional students from Progress Dynamic International Academy have been selected as recipients of the Federal Government of Nigeria Unity Schools Bursary for the 2025/2026 academic year.</p><p>The scholarship covers full tuition fees, textbooks, and a monthly stipend of ₦30,000 per student. Selection was based on academic performance, character assessments, and a written application essay.</p><h3>Meet Some of the Winners</h3><p>Among the recipients are Blessing Adeyemi (SS2A, top of her class), Musa Abdullahi (JSS3B, won the FCT Mathematics Olympiad), and Chioma Obi (SS1, exceptional in Sciences). The school congratulates all 15 students and their families on this well-deserved recognition.</p>`
+  },
+  {
+    id: 5, cat: 'staff', title: 'Staff Spotlight: 25 Years of Excellence — Celebrating Mr. Okafor',
+    excerpt: 'Mr. Joseph Okafor, our beloved History teacher, marks 25 years of service at PDIA this month. We sit down with a true legend of the school.',
+    img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&q=80',
+    author: 'principal', date: 'Apr 22, 2025', readtime: '6 min', reactions: { '👍': 88, '❤️': 72, '⭐': 45 },
+    comments: [{ name: 'Alumni 2010', text: 'Mr. Okafor was the best! He made me love History forever.', time: '5d ago' }],
+    fullContent: `<p>This month, PDIA celebrates a milestone that fills the entire school community with warmth and gratitude: Mr. Joseph Okafor, our Head of Humanities and beloved History teacher, marks 25 years of dedicated service at the school.</p><p>Mr. Okafor joined PDIA in 2000 as a fresh graduate from the University of Nigeria, Nsukka. In a quarter-century of teaching, he has shaped the minds of over 5,000 students, many of whom are now politicians, historians, diplomats, and community leaders across Nigeria and the world.</p><blockquote>"I never saw teaching as a job. PDIA is my life's calling. These children are my children."</blockquote><h3>A Celebration to Remember</h3><p>The school will hold a surprise appreciation assembly for Mr. Okafor on Friday, May 17th, where students, staff, and alumni will gather to honour him. Parents are welcome to attend.</p>`
+  },
+  {
+    id: 6, cat: 'sports', title: 'Inter-House Athletics: Red House Emerges Overall Champion',
+    excerpt: 'Red House swept the board at this year\'s Inter-House Sports Day, claiming 14 gold medals across athletics, swimming, and field events.',
+    img: 'https://i.postimg.cc/Yq9F5CWx/IMG-3457.avif',
+    author: 'emeka', date: 'Apr 18, 2025', readtime: '3 min', reactions: { '👍': 52, '❤️': 30, '⭐': 16 },
+    comments: [],
+    fullContent: `<p>Red House made history at PDIA's 2025 Inter-House Sports Day by clinching the overall championship with a record 14 gold medals — the most any house has ever won in a single year.</p><p>The Sports Day, held on the school's 10-acre athletics field, drew over 2,000 spectators including parents, alumni, and FCT education officials. Students competed across 36 events covering sprints, long-distance, long jump, high jump, relay, swimming, and team sports.</p><h3>Standout Performers</h3><p>17-year-old Amaka Obi broke the school's 100m record with a time of 11.4 seconds. 14-year-old Yusuf Musa won gold in both the 400m and 800m events, earning the title of Most Outstanding Male Athlete. Coach Emeka Eze described the day as "the best Sports Day in PDIA's history."</p>`
+  },
+  {
+    id: 7, cat: 'arts', title: 'PDIA Drama Club Wins Best Production at National Schools Theatre Festival',
+    excerpt: 'Our Drama Club\'s original play "The Last Baobab" took home the Best Production and Best Director awards at the 2025 National Schools Theatre Festival in Lagos.',
+    img: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80',
+    author: 'fatima', date: 'Apr 14, 2025', readtime: '4 min', reactions: { '👍': 67, '❤️': 58, '⭐': 39 },
+    comments: [{ name: 'Drama Parent', text: 'My daughter was in this production. I cried watching her perform!', time: '1w ago' }],
+    fullContent: `<p>The PDIA Drama Club brought national glory to the school by winning the Best Production and Best Director awards at the 2025 National Schools Theatre Festival held in Lagos.</p><p>The club performed an original play titled "The Last Baobab" — a powerful story about climate change, community, and the wisdom of elders — written by SS2 student Chidinma Achebe and directed by her classmate Tunde Olatunji.</p><blockquote>"We wanted to tell an African story, in an African way, with African hearts. I think the audience felt that." — Chidinma Achebe, playwright</blockquote><p>The production featured 28 student cast and crew members, hand-sewn costumes, original music scored by the school's music students, and a live percussion ensemble. The festival jury praised it as "the most emotionally resonant production of the competition."</p>`
+  },
+  {
+    id: 8, cat: 'news', title: 'New School Bus Fleet Arrives — Safer Commutes for PDIA Students',
+    excerpt: 'Eight brand-new air-conditioned school buses have been added to the PDIA fleet, fitted with GPS tracking and CCTV cameras for maximum safety.',
+    img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80',
+    author: 'principal', date: 'Apr 10, 2025', readtime: '2 min', reactions: { '👍': 44, '❤️': 28, '⭐': 12 },
+    comments: [],
+    fullContent: `<p>PDIA has invested ₦180 million in eight brand-new Mercedes-Benz school buses to replace the aging fleet. Each bus is air-conditioned, fitted with real-time GPS tracking, interior CCTV cameras, and 45 padded seats with seatbelts.</p><p>Parents can track their child's bus in real-time via the PDIA Parent App. The new buses will begin operations at the start of the new academic session in September 2025.</p><p>Principal Mrs. Adaora Emeka stated: "The safety of our students on the road is a non-negotiable priority. This investment reflects our commitment to every aspect of the student experience, not just academics."</p>`
+  },
+  // Page 2 posts
+  {
+    id: 9, cat: 'academic', title: 'Junior Science Competition: PDIA Primary Students Win National Gold',
+    excerpt: 'Three Primary 5 students represented FCT and brought home the gold medal at the 2025 Cowbell Mathematics Championship in Lagos.',
+    img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80',
+    author: 'chinyere', date: 'Apr 5, 2025', readtime: '3 min', reactions: { '👍': 38, '❤️': 25, '⭐': 18 },
+    comments: [],
+    fullContent: `<p>Three bright Primary 5 students — Adanna Okeke, Hamza Aliyu, and Chiamaka Eze — represented the FCT at the 2025 Cowbell Mathematics Championship in Lagos and returned with the National Gold Medal.</p><p>The competition tested speed, accuracy, and problem-solving across arithmetic, algebra, and logic puzzles. "We practised every day after school for four months," said Adanna, 10. "Mrs. Okwu never gave up on us."</p>`
+  },
+  {
+    id: 10, cat: 'events', title: 'Parents-Teachers Meeting Report: May 2025',
+    excerpt: 'Over 800 parents attended the May Term Parents-Teachers Meeting. Here is a full summary of discussions, announcements, and decisions made.',
+    img: 'https://i.postimg.cc/s2SpgfsS/IMG-3487.avif',
+    author: 'adaeze', date: 'Apr 1, 2025', readtime: '5 min', reactions: { '👍': 29, '❤️': 14, '⭐': 8 },
+    comments: [{ name: 'Mr. Bello', text: 'Good to see the school acting on parent feedback so quickly.', time: '2w ago' }],
+    fullContent: `<p>The May 2025 Parents-Teachers Meeting was the best-attended PTM in PDIA history, with over 800 parents and guardians turning out. The session was chaired by Principal Mrs. Adaora Emeka and Vice Principal Mr. Sunday Ojo.</p><h3>Key Announcements</h3><p>1. New school buses commence September 2025. 2. Tuition fees will increase by 8% for the 2025/2026 session — details sent to all parents via the portal. 3. A new Counselling Centre opens in June 2025. 4. The school canteen will be fully renovated over the summer holidays.</p>`
+  },
+  {
+    id: 11, cat: 'news', title: 'PDIA Earns ISO 21001 Educational Organisation Certification',
+    excerpt: 'We are proud to announce that PDIA has been certified by the International Organisation for Standardisation for Educational Management Quality.',
+    img: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80',
+    author: 'principal', date: 'Mar 28, 2025', readtime: '3 min', reactions: { '👍': 71, '❤️': 48, '⭐': 36 },
+    comments: [],
+    fullContent: `<p>Progress Dynamic International Academy has become one of fewer than 10 schools in Nigeria to earn the ISO 21001:2018 Educational Organisations Management Systems certification.</p><p>The ISO 21001 standard recognises organisations that have implemented internationally benchmarked systems for educational quality management, learner support, and continuous improvement. PDIA underwent a rigorous 18-month audit process by external ISO assessors.</p>`
+  },
+  {
+    id: 12, cat: 'sports', title: 'Swimming Team Breaks Three FCT Records at Aquatic Championship',
+    excerpt: 'PDIA swimmers Aisha Mohammed, David Ikenna, and Ngozi Chukwu each set new FCT records at the annual FCT Secondary Schools Aquatic Championship.',
+    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80',
+    author: 'emeka', date: 'Mar 22, 2025', readtime: '3 min', reactions: { '👍': 45, '❤️': 32, '⭐': 19 },
+    comments: [],
+    fullContent: `<p>Three PDIA swimmers made FCT history at the 2025 Aquatic Championship by breaking long-standing records in the 100m freestyle, 200m breaststroke, and 4×100m relay.</p><p>Aisha Mohammed (SS1) broke the female 100m freestyle record with a time of 58.4 seconds. David Ikenna (SS2) shattered the 200m breaststroke record by 1.3 seconds. The relay team of Aisha, Ngozi Chukwu, Mira Olawale, and Chisom Adichie set a new 4×100m relay record of 4:02.7.</p>`
+  },
+  {
+    id: 13, cat: 'arts', title: 'PDIA Choir Invited to Perform at Abuja International Arts Festival',
+    excerpt: 'The 80-member PDIA Combined Choir has been invited to headline the Youth Stage at the Abuja International Arts Festival in July 2025.',
+    img: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=600&q=80',
+    author: 'fatima', date: 'Mar 18, 2025', readtime: '2 min', reactions: { '👍': 54, '❤️': 49, '⭐': 27 },
+    comments: [],
+    fullContent: `<p>The 80-member PDIA Combined Choir — made up of students from JSS1 through SS3 — has been officially invited to headline the Youth Stage at the 2025 Abuja International Arts Festival scheduled for July 18-20 at the Millennium Park.</p><p>The choir, directed by Mr. Felix Chukwu (Music HOD), will perform a 40-minute set including original compositions, traditional Nigerian folk songs arranged for choral performance, and a special tribute to legendary Nigerian composer Fela Sowande.</p>`
+  },
+  {
+    id: 14, cat: 'events', title: 'Graduation Ceremony 2025: Class of 2025 Takes Flight',
+    excerpt: '263 students graduated from PDIA in a glittering ceremony at the Grand Auditorium. The valedictorian address moved the entire hall to tears.',
+    img: 'https://i.postimg.cc/vBbg3YyB/IMG-3446.avif',
+    author: 'principal', date: 'Mar 12, 2025', readtime: '4 min', reactions: { '👍': 112, '❤️': 98, '⭐': 67 },
+    comments: [{ name: 'Graduating Parent', text: 'The best day of our lives. Thank you PDIA for everything!', time: '3w ago' }],
+    fullContent: `<p>The PDIA Class of 2025 Graduation Ceremony was held on March 12th at the school's 1,500-seat Grand Auditorium, with parents, families, staff, and dignitaries celebrating 263 graduating students.</p><p>Valedictorian Miss Adaeze Nwosu-Obi delivered a speech that moved many in the audience to tears, speaking about resilience, gratitude to teachers, and the responsibility of educated Nigerians to give back to their communities.</p><blockquote>"PDIA did not just give us certificates. PDIA gave us character." — Valedictorian Adaeze Nwosu-Obi, Class of 2025</blockquote>`
+  },
+  {
+    id: 15, cat: 'news', title: 'PDIA Introduces STEM Saturday Club for Abuja Community Children',
+    excerpt: 'Every Saturday, PDIA opens its science and technology labs to underprivileged children from surrounding communities — free of charge.',
+    img: 'https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=600&q=80',
+    author: 'garba', date: 'Mar 6, 2025', readtime: '4 min', reactions: { '👍': 83, '❤️': 71, '⭐': 44 },
+    comments: [],
+    fullContent: `<p>PDIA has launched "STEM Saturdays" — a free weekly programme that opens the school's Robotics Lab, ICT Lab, and Science Laboratories to children from underprivileged families in the surrounding Wuse, Lugbe, and Karu communities.</p><p>Every Saturday from 9am to 1pm, PDIA students in the Web Development Club, Science Club, and Robotics Club serve as peer mentors, teaching children aged 10-17 the basics of coding, electronics, and science experiments.</p><p>The initiative is supported by Abuja FCT Education Secretariat and a grant from MTN Foundation Nigeria. Over 120 community children have already registered for the programme.</p>`
+  },
+  {
+    id: 16, cat: 'staff', title: 'Welcome to the Team: PDIA Appoints New Vice Principal (Academics)',
+    excerpt: 'Dr. Ngozi Obi joins PDIA as our new Vice Principal for Academics, bringing 18 years of experience from Cambridge International Education.',
+    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80',
+    author: 'principal', date: 'Feb 28, 2025', readtime: '3 min', reactions: { '👍': 59, '❤️': 44, '⭐': 28 },
+    comments: [],
+    fullContent: `<p>PDIA is thrilled to welcome Dr. Ngozi Obi as our new Vice Principal for Academics. Dr. Obi joins us with 18 years of experience in educational leadership, having served as a Cambridge International Education trainer for West Africa for the past 8 years.</p><p>She holds a PhD in Educational Psychology from the University of Edinburgh and an MEd from Lagos State University. Dr. Obi says she chose PDIA because of "the school's visible commitment to both academic excellence and the holistic development of every student."</p>`
+  },
+  {
+    id: 17, cat: 'events', title: 'Entrepreneurship Fair 2025: Students Raise ₦2.3 Million in One Day',
+    excerpt: 'SS2 and SS3 students ran real businesses at this year\'s Entrepreneurship Fair, collectively generating over ₦2.3 million in sales from 47 student-led ventures.',
+    img: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600&q=80',
+    author: 'adaeze', date: 'Feb 20, 2025', readtime: '4 min', reactions: { '👍': 77, '❤️': 62, '⭐': 41 },
+    comments: [{ name: 'Commerce Teacher', text: 'Seeing real entrepreneurship come to life was magical!', time: '1m ago' }],
+    fullContent: `<p>PDIA's 2025 Entrepreneurship Fair shattered all previous records, with 47 student-led businesses generating a combined revenue of ₦2.3 million in a single school day.</p><p>Products and services on offer ranged from handcrafted jewellery and bespoke fashion items, to food stalls, coding services, graphic design packages, and even a student-run barbershop. All proceeds go directly to the student entrepreneurs.</p><p>Most Outstanding Business Award went to "EduBox" — a subscription service for WAEC study packs run by four SS2 students who had already acquired 38 paying subscribers before the fair even started.</p>`
+  },
+  {
+    id: 18, cat: 'academic', title: 'PDIA Students Compete at International Maths Olympiad in South Africa',
+    excerpt: 'Four of our brightest mathematics students represented Nigeria at the Pan-African Mathematics Olympiad in Cape Town, with one winning a Bronze medal.',
+    img: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&q=80',
+    author: 'chinyere', date: 'Feb 14, 2025', readtime: '4 min', reactions: { '👍': 68, '❤️': 53, '⭐': 37 },
+    comments: [],
+    fullContent: `<p>Four PDIA students — Hamza Aliyu, Tunde Olatunji, Grace Okonkwo, and Emeka Adeyemi — represented Nigeria at the 2025 Pan-African Mathematics Olympiad held in Cape Town, South Africa.</p><p>Hamza Aliyu (SS2) won a Bronze Medal in the Individual Algebra category, making him one of only three Nigerian students to medal at the competition. The team placed 5th overall among 22 participating countries.</p>`
+  },
+  {
+    id: 19, cat: 'arts', title: 'Visual Arts Exhibition: "Roots & Wings" Opens at National Gallery',
+    excerpt: 'An exhibition of 60 artworks created by PDIA students opened at the National Gallery of Art in Abuja, themed around identity, heritage, and aspiration.',
+    img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80',
+    author: 'fatima', date: 'Feb 8, 2025', readtime: '3 min', reactions: { '👍': 61, '❤️': 55, '⭐': 33 },
+    comments: [],
+    fullContent: `<p>Sixty original artworks by PDIA students — ranging from oil paintings and charcoal sketches to mixed-media installations and digital art prints — opened to the public at the National Gallery of Art in Abuja on February 8th.</p><p>The exhibition, titled "Roots & Wings," explores themes of Nigerian identity, cultural heritage, and youthful aspiration. It will run for six weeks and is open to the public free of charge.</p>`
+  },
+  {
+    id: 20, cat: 'sports', title: 'Girls Basketball Team Qualifies for National Schools Championships',
+    excerpt: 'Our Under-19 Girls Basketball team has qualified for the National Schools Basketball Championships for the first time in PDIA\'s history.',
+    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80',
+    author: 'emeka', date: 'Jan 30, 2025', readtime: '2 min', reactions: { '👍': 49, '❤️': 38, '⭐': 21 },
+    comments: [],
+    fullContent: `<p>History has been made! The PDIA Under-19 Girls Basketball team has qualified for the National Secondary Schools Basketball Championships — the first time a PDIA team has ever reached this stage of the competition.</p><p>The team, coached by Mr. Emeka Eze and Captain Blessing Okonkwo (SS3), won all eight of their FCT qualifying matches without dropping a single game.</p>`
+  },
+  {
+    id: 21, cat: 'news', title: 'PDIA Partners with British Council for Teacher Professional Development',
+    excerpt: 'All 140 PDIA teachers will undergo British Council-certified CPD training this summer, funded fully by the school management.',
+    img: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80',
+    author: 'principal', date: 'Jan 22, 2025', readtime: '3 min', reactions: { '👍': 55, '❤️': 42, '⭐': 26 },
+    comments: [],
+    fullContent: `<p>PDIA has formalised a landmark partnership with the British Council Nigeria to deliver a comprehensive Continuing Professional Development (CPD) programme for all 140 teaching staff during the summer break.</p><p>The programme covers 21st-Century Pedagogy, Inclusive Education, EdTech Integration, Student Mental Health, and Cambridge Assessment techniques. All participating teachers will receive an internationally recognised British Council CPD certificate.</p>`
+  },
+  {
+    id: 22, cat: 'academic', title: 'Reading Challenge Results: JSS1 Students Read 10,000 Books in One Term',
+    excerpt: 'In just one school term, our JSS1 students collectively read 10,247 books as part of the PDIA Digital and Print Reading Challenge — shattering all previous records.',
+    img: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80',
+    author: 'adaeze', date: 'Jan 15, 2025', readtime: '3 min', reactions: { '👍': 43, '❤️': 36, '⭐': 24 },
+    comments: [],
+    fullContent: `<p>JSS1 students at PDIA have collectively read 10,247 books in a single term — smashing the previous school reading record of 6,200 books set in 2023. The achievement was announced by School Counsellor Mrs. Adaeze Nwosu at the Term Assembly.</p><p>The Reading Challenge, which runs each term for all junior school students, tracks both physical library books and digital titles accessed through the school's Oxford Reading Tree online portal. Top reader Faridah Musa (JSS1C) personally completed 187 books in the term.</p>`
+  },
+  {
+    id: 23, cat: 'events', title: 'Founders\' Day 2025: 26 Years of Shaping Nigeria\'s Leaders',
+    excerpt: 'PDIA marked its 26th Founders\' Day with a grand assembly, awards ceremony, and the unveiling of the new School of Excellence Building.',
+    img: 'https://i.postimg.cc/yx69jF9g/IMG-3500.avif',
+    author: 'principal', date: 'Jan 10, 2025', readtime: '5 min', reactions: { '👍': 94, '❤️': 82, '⭐': 58 },
+    comments: [{ name: 'Proud Alumnus', text: 'PDIA made me. Happy 26th anniversary to the best school in Nigeria!', time: '2m ago' }],
+    fullContent: `<p>Progress Dynamic International Academy celebrated its 26th Founders' Day on January 10th, 2025, with a grand assembly attended by over 3,000 students, parents, staff, and distinguished alumni.</p><p>The highlight of the day was the unveiling of the new School of Excellence Building — a four-storey structure housing 24 smart classrooms, a student wellness centre, two music recording studios, and a rooftop observation deck.</p><blockquote>"Twenty-six years ago, our founders had a dream. Today, we are that dream, made real." — Principal Mrs. Adaora Emeka</blockquote>`
+  },
+];
+
+// ─────────────────────────────────────
+// STATE
+// ─────────────────────────────────────
+const POSTS_PER_PAGE = 9;
+let currentFilter = 'all';
+let currentSearch = '';
+let currentAuthorFilter = null;
+let visibleCount = POSTS_PER_PAGE;
+let reactions = {}; // track per-post reactions { postId: { emoji: bool } }
+let commentInputs = {}; // track comments added in session
+
+// ─────────────────────────────────────
+// FILTER UTILS
+// ─────────────────────────────────────
+function getFilteredPosts() {
+  return ALL_POSTS.filter(p => {
+    if (currentFilter !== 'all' && p.cat !== currentFilter) return false;
+    if (currentAuthorFilter && AUTHORS[p.author].name !== currentAuthorFilter) return false;
+    if (currentSearch) {
+      const q = currentSearch.toLowerCase();
+      if (!p.title.toLowerCase().includes(q) && !p.excerpt.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+// ─────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────
+function renderGrid() {
+  const grid = document.getElementById('postsGrid');
+  const filtered = getFilteredPosts();
+  const toShow = filtered.slice(0, visibleCount);
+
+  document.getElementById('showingCount').textContent = Math.min(visibleCount, filtered.length);
+  document.getElementById('totalCount').textContent = filtered.length;
+  document.getElementById('showingLabel').textContent = `Showing ${Math.min(visibleCount, filtered.length)} of ${filtered.length} stories`;
+
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  loadMoreBtn.style.display = visibleCount >= filtered.length ? 'none' : 'flex';
+
+  grid.innerHTML = '';
+  if (toShow.length === 0) {
+    grid.innerHTML = `<div class="no-results"><div class="no-results-icon"><i class="fa-solid fa-newspaper"></i></div><h3>No stories found</h3><p>Try a different category or search term.</p></div>`;
+    return;
+  }
+
+  toShow.forEach((post, idx) => {
+    // Insert newsletter strip after 5th card
+    if (idx === 5 && currentFilter === 'all' && !currentSearch) {
+      const nl = document.createElement('div');
+      nl.style.gridColumn = '1/-1';
+      nl.innerHTML = `
+        <div class="newsletter-strip">
+          <div class="newsletter-text">
+            <div class="nl-label">Stay Informed</div>
+            <h3>Get PDIA News in Your Inbox</h3>
+            <p>School updates, event reminders, and academic news — delivered weekly.</p>
+          </div>
+          <div class="newsletter-form" id="nlForm${idx}">
+            <input class="nl-input" type="email" placeholder="parent@email.com" id="nlEmail${idx}" aria-label="Email for newsletter" />
+            <button class="nl-btn" onclick="subscribeNL(${idx})"><i class="fa-solid fa-paper-plane"></i> Subscribe</button>
+          </div>
+          <div class="nl-success" id="nlSuccess${idx}"><i class="fa-solid fa-check"></i> You're subscribed! Welcome to the PDIA community.</div>
+        </div>`;
+      grid.appendChild(nl);
+    }
+
+    const a = AUTHORS[post.author];
+    const catColors = { news: 'cat-news', events: 'cat-events', academic: 'cat-academic', sports: 'cat-sports', arts: 'cat-arts', staff: 'cat-staff' };
+    const catLabels = { news: 'News', events: 'Events', academic: 'Academic', sports: 'Sports', arts: 'Arts', staff: 'Staff Spotlight' };
+    const catColor = catColors[post.cat] || 'cat-news';
+    const catLabel = catLabels[post.cat] || post.cat;
+
+    // Reactions
+    const reactState = reactions[post.id] || {};
+    const reactionHtml = Object.entries(post.reactions).map(([emoji, count]) => {
+      const isReacted = reactState[emoji];
+      return `<button class="reaction-btn${isReacted ? ' reacted' : ''}" onclick="toggleReaction(${post.id}, '${emoji}', this)" aria-label="React ${emoji}">${emoji} <span>${count + (isReacted ? 1 : 0)}</span></button>`;
+    }).join('');
+
+    const card = document.createElement('div');
+    card.className = 'post-card reveal';
+    card.innerHTML = `
+      <div class="post-thumb">
+        <img src="${post.img}" alt="${post.title}" loading="lazy" />
+        <span class="post-cat-badge ${catColor}">${catLabel}</span>
+        <div class="post-share-row">
+          <button class="post-share-mini share-wa" onclick="event.stopPropagation();sharePost('wa','${post.title.replace(/'/g,"\\'")}')"><i class="fa-brands fa-whatsapp"></i><span class="tooltip">WhatsApp</span></button>
+          <button class="post-share-mini share-fb" onclick="event.stopPropagation();sharePost('fb')"><i class="fa-brands fa-facebook-f"></i><span class="tooltip">Facebook</span></button>
+          <button class="post-share-mini share-tw" onclick="event.stopPropagation();sharePost('tw')"><i class="fa-brands fa-x-twitter"></i><span class="tooltip">X</span></button>
+          <button class="post-share-mini share-cp" onclick="event.stopPropagation();copyLink()"><i class="fa-solid fa-link"></i><span class="tooltip">Copy</span></button>
+        </div>
+      </div>
+      <div class="post-body" onclick="openPost(${post.id})">
+        <div class="post-title">${post.title}</div>
+        <div class="post-excerpt">${post.excerpt}</div>
+        <div class="post-footer">
+          <div class="post-author">
+            <img class="post-author-avatar" src="${a.avatar}" alt="${a.name}" loading="lazy" />
+            <div>
+              <div class="post-author-name" onclick="event.stopPropagation();filterByAuthor('${a.name}')">${a.name}</div>
+              <div class="post-author-role">${a.role}</div>
+            </div>
+          </div>
+          <div class="post-meta-right">
+            <div class="post-date">${post.date}</div>
+            <div class="post-readtime"><i class="fa-regular fa-clock"></i> ${post.readtime}</div>
+          </div>
+        </div>
+      </div>
+      <div class="reaction-bar">
+        ${reactionHtml}
+        <div class="comment-count"><i class="fa-regular fa-comment"></i> ${post.comments.length + (commentInputs[post.id] ? commentInputs[post.id].length : 0)}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+    // Trigger reveal
+    requestAnimationFrame(() => {
+      setTimeout(() => card.classList.add('visible'), idx * 60);
+    });
+  });
+
+  // Re-observe reveals
+  observeReveals();
+}
+
+// ─────────────────────────────────────
+// INTERACTIONS
+// ─────────────────────────────────────
+function filterCat(cat, btn) {
+  currentFilter = cat;
+  currentAuthorFilter = null;
+  visibleCount = POSTS_PER_PAGE;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+
+function filterByAuthor(name) {
+  currentAuthorFilter = currentAuthorFilter === name ? null : name;
+  currentFilter = 'all';
+  document.querySelectorAll('.filter-pill').forEach(p => {
+    p.classList.toggle('active', p.getAttribute('onclick')?.includes("'all'"));
+  });
+  visibleCount = POSTS_PER_PAGE;
+  renderGrid();
+  // Show toast if filtering
+  if (currentAuthorFilter) {
+    showToast(`Showing posts by ${name}`);
+  }
+}
+
+function handleSearch(input) {
+  currentSearch = input.value;
+  document.getElementById('searchClear').classList.toggle('visible', !!currentSearch);
+  currentAuthorFilter = null;
+  visibleCount = POSTS_PER_PAGE;
+  renderGrid();
+}
+
+function clearSearch() {
+  const inp = document.getElementById('searchInput');
+  inp.value = '';
+  currentSearch = '';
+  document.getElementById('searchClear').classList.remove('visible');
+  visibleCount = POSTS_PER_PAGE;
+  renderGrid();
+}
+
+function loadMore() {
+  const btn = document.getElementById('loadMoreBtn');
+  btn.innerHTML = '<i class="fa-solid fa-spinner loading"></i> Loading…';
+  btn.disabled = true;
+  setTimeout(() => {
+    visibleCount += POSTS_PER_PAGE;
+    renderGrid();
+    btn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Load more stories';
+    btn.disabled = false;
+  }, 700);
+}
+
+function toggleReaction(postId, emoji, btn) {
+  if (!reactions[postId]) reactions[postId] = {};
+  const was = reactions[postId][emoji];
+  reactions[postId][emoji] = !was;
+  const countEl = btn.querySelector('span');
+  const post = ALL_POSTS.find(p => p.id === postId);
+  const base = post.reactions[emoji];
+  countEl.textContent = base + (reactions[postId][emoji] ? 1 : 0);
+  btn.classList.toggle('reacted', reactions[postId][emoji]);
+}
+
+// ─────────────────────────────────────
+// POST MODAL
+// ─────────────────────────────────────
+function openPost(id) {
+  const post = ALL_POSTS.find(p => p.id === id);
+  const a = AUTHORS[post.author];
+  const catLabels = { news: 'News', events: 'Events', academic: 'Academic', sports: 'Sports', arts: 'Arts', staff: 'Staff Spotlight' };
+  const catColors = { news: '#DC2626', events: '#B45309', academic: '#1D4ED8', sports: '#047857', arts: '#6D28D9', staff: '#C2410C' };
+
+  document.getElementById('modalImg').src = post.img;
+  document.getElementById('modalImg').alt = post.title;
+  document.getElementById('modalCat').textContent = catLabels[post.cat] || post.cat;
+  document.getElementById('modalCat').style.color = catColors[post.cat] || '#1D4ED8';
+  document.getElementById('modalTitle').textContent = post.title;
+  document.getElementById('modalAvatar').src = a.avatar;
+  document.getElementById('modalAuthorName').textContent = a.name;
+  document.getElementById('modalAuthorRole').textContent = a.role;
+  document.getElementById('modalDate').textContent = post.date;
+  document.getElementById('modalReadtime').textContent = post.readtime;
+  document.getElementById('modalContent').innerHTML = post.fullContent;
+
+  // Render comments
+  const allComments = [...post.comments, ...(commentInputs[post.id] || [])];
+  renderComments(id, allComments);
+
+  document.getElementById('postOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('commentInput').dataset.postId = id;
+}
+
+function renderComments(postId, comments) {
+  const list = document.getElementById('commentsList');
+  if (comments.length === 0) {
+    list.innerHTML = '<p style="font-size:13px;color:var(--gray-400);font-style:italic;">No comments yet. Be the first to share your thoughts!</p>';
+    return;
+  }
+  list.innerHTML = comments.map(c => `
+    <div class="comment-item">
+      <div class="comment-avatar">${c.name.charAt(0)}</div>
+      <div class="comment-bubble">
+        <div class="comment-author-name">${c.name}</div>
+        <div class="comment-text">${c.text}</div>
+        <div class="comment-time">${c.time}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function postComment() {
+  const inp = document.getElementById('commentInput');
+  const postId = parseInt(inp.dataset.postId);
+  if (!inp.value.trim()) return;
+  if (!commentInputs[postId]) commentInputs[postId] = [];
+  const newComment = { name: 'You', text: inp.value.trim(), time: 'Just now' };
+  commentInputs[postId].push(newComment);
+  inp.value = '';
+  const post = ALL_POSTS.find(p => p.id === postId);
+  renderComments(postId, [...post.comments, ...commentInputs[postId]]);
+  renderGrid(); // update comment count
+}
+
+function closePost(e) {
+  if (e.target === document.getElementById('postOverlay')) closePostDirect();
+}
+function closePostDirect() {
+  document.getElementById('postOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─────────────────────────────────────
+// NEWSLETTER
+// ─────────────────────────────────────
+function subscribeNL(idx) {
+  const email = document.getElementById(`nlEmail${idx}`).value.trim();
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  document.getElementById(`nlForm${idx}`).style.display = 'none';
+  document.getElementById(`nlSuccess${idx}`).style.display = 'flex';
+}
+
+// ─────────────────────────────────────
+// SHARING
+// ─────────────────────────────────────
+function sharePost(platform, text) {
+  const url = encodeURIComponent(window.location.href);
+  const msg = encodeURIComponent((text || 'Check out this news from PDIA!') + ' ' + window.location.href);
+  const links = {
+    wa: `https://wa.me/?text=${msg}`,
+    fb: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+    tw: `https://twitter.com/intent/tweet?text=${msg}`,
+  };
+  if (links[platform]) window.open(links[platform], '_blank', 'width=600,height=400');
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => showToast('Link copied to clipboard!')).catch(() => {
+    const el = document.createElement('textarea');
+    el.value = window.location.href;
+    document.body.appendChild(el); el.select();
+    document.execCommand('copy'); document.body.removeChild(el);
+    showToast('Link copied to clipboard!');
+  });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('copyToast');
+  t.querySelector('span') ? t.innerHTML = `<i class="fa-solid fa-check"></i> ${msg}` : null;
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ─────────────────────────────────────
+// MOBILE NAV
+// ─────────────────────────────────────
+function toggleMobile() {
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('mobileNav');
+  ham.classList.toggle('open');
+  nav.classList.toggle('open');
+}
+
+document.addEventListener('click', e => {
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('mobileNav');
+  if (nav.classList.contains('open') && !ham.contains(e.target) && !nav.contains(e.target)) {
+    ham.classList.remove('open');
+    nav.classList.remove('open');
+  }
+});
+
+// ─────────────────────────────────────
+// REVEAL ON SCROLL
+// ─────────────────────────────────────
+function observeReveals() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+}
+
+// ─────────────────────────────────────
+// KEYBOARD NAV for filter pills
+// ─────────────────────────────────────
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pill.click(); }
+  });
+});
+
+// ─────────────────────────────────────
+// ESC KEY
+// ─────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePostDirect();
+});
+
+// ─────────────────────────────────────
+// INIT
+// ─────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderGrid();
+  observeReveals();
+
+  // Update category counts in filter pills
+  const cats = ['news', 'events', 'academic', 'sports', 'arts', 'staff'];
+  cats.forEach(cat => {
+    const el = document.getElementById(`count-${cat}`);
+    if (el) el.textContent = ALL_POSTS.filter(p => p.cat === cat).length;
+  });
+  document.getElementById('count-all').textContent = ALL_POSTS.length;
+
+  // Fix toast reference
+  const t = document.getElementById('copyToast');
+  if (!t.innerHTML.includes('fa-check')) t.innerHTML = `<i class="fa-solid fa-check"></i> <span>Link copied!</span>`;
+});
+    // Lightbox
     document.querySelectorAll('.gallery-item').forEach(item => {
       item.addEventListener('click', () => {
-        const img = item.querySelector('img');
-        document.getElementById('lightboxImg').src = img.src;
+        document.getElementById('lightboxImg').src = item.querySelector('img').src;
         document.getElementById('lightbox').classList.add('open');
         document.body.style.overflow = 'hidden';
       });
     });
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
 
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // ===================== FEE PLAN SELECT =====================
+    // Fee plan select
     function selectPlan(card, name, amount) {
       document.querySelectorAll('.fee-card').forEach(c => c.style.outline = 'none');
       card.style.outline = '2px solid var(--sky)';
-      document.getElementById('classLevel').value = '';
       document.getElementById('payAmount').value = '₦' + parseInt(amount).toLocaleString();
     }
 
-    // ===================== PAYMENT HANDLER =====================
+    // Payment handler
     function handlePayment() {
       const name = document.getElementById('studentName').value.trim();
       const email = document.getElementById('email').value.trim();
-      if (!name || !email) {
-        alert('Please fill in the student name and email before proceeding.');
-        return;
-      }
+      if (!name || !email) { alert('Please fill in the student name and email before proceeding.'); return; }
       document.getElementById('modalOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
 
-    function closeModal() {
-      document.getElementById('modalOverlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // ===================== SCROLL REVEAL =====================
+    // Scroll reveal
     const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // ===================== COUNTER ANIMATION =====================
+    // Counter animation
     function animateCounter(el) {
       const target = parseInt(el.dataset.target);
-      const duration = 2000;
-      const step = target / (duration / 16);
+      const step = target / (2000 / 16);
       let current = 0;
       const timer = setInterval(() => {
         current += step;
@@ -2173,22 +1872,23 @@
         el.textContent = Math.floor(current).toLocaleString();
       }, 16);
     }
-
     const heroObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        document.querySelectorAll('.counter').forEach(animateCounter);
-        heroObserver.disconnect();
-      }
+      if (entries[0].isIntersecting) { document.querySelectorAll('.counter').forEach(animateCounter); heroObserver.disconnect(); }
     }, { threshold: 0.3 });
-
     heroObserver.observe(document.querySelector('.hero'));
 
     // Close mobile menu on outside click
     document.addEventListener('click', (e) => {
       const menu = document.getElementById('mobileMenu');
       const nav = document.getElementById('navbar');
-      if (menu.classList.contains('open') && !nav.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove('open');
+      if (menu.classList.contains('open') && !nav.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
+    });
+
+    // Handle anchor hash on load (for when returning from blog page)
+    window.addEventListener('load', () => {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
       }
     });
   </script>
